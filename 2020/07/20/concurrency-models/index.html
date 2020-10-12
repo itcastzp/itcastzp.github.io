@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="并发模型 并发模型和分布式系统的相似性 共享状态与分离状态 Parallel-Wokers Parallel-Wokers优势 parallel-workers劣势 共享状态会变得复杂 无状态的workers 任务顺序是不确定的     流水线 反应性，事件驱动系统 演员与频道   流水线优势 没有共享状态 有状态的workers 更好的硬件整合 任务可以排序   组装线的缺点 功能并行 哪种并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发模型">
+<meta property="og:url" content="http://example.com/2020/07/20/concurrency-models/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="并发模型 并发模型和分布式系统的相似性 共享状态与分离状态 Parallel-Wokers Parallel-Wokers优势 parallel-workers劣势 共享状态会变得复杂 无状态的workers 任务顺序是不确定的     流水线 反应性，事件驱动系统 演员与频道   流水线优势 没有共享状态 有状态的workers 更好的硬件整合 任务可以排序   组装线的缺点 功能并行 哪种并发">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-0-1.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-0-2.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-1.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-2.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-3.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-4.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-5.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-6.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-7.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-8.png">
+<meta property="og:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-8.png">
+<meta property="article:published_time" content="2020-07-20T09:28:49.000Z">
+<meta property="article:modified_time" content="2020-07-21T09:39:55.357Z">
+<meta property="article:author" content="ZP">
+<meta property="article:tag" content="Concurrency">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-0-1.png">
+
+
+<link rel="canonical" href="http://example.com/2020/07/20/concurrency-models/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>并发模型 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">并发模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">并发模型和分布式系统的相似性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81%E4%B8%8E%E5%88%86%E7%A6%BB%E7%8A%B6%E6%80%81"><span class="nav-number">1.2.</span> <span class="nav-text">共享状态与分离状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel-Wokers"><span class="nav-number">1.3.</span> <span class="nav-text">Parallel-Wokers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel-Wokers%E4%BC%98%E5%8A%BF"><span class="nav-number">1.4.</span> <span class="nav-text">Parallel-Wokers优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel-Wokers%E5%8A%A3%E5%8A%BF"><span class="nav-number">1.5.</span> <span class="nav-text">Parallel-Wokers劣势</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81%E4%BC%9A%E5%8F%98%E5%BE%97%E5%A4%8D%E6%9D%82"><span class="nav-number">1.5.1.</span> <span class="nav-text">共享状态会变得复杂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84Workers"><span class="nav-number">1.5.2.</span> <span class="nav-text">无状态的Workers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A%E6%8E%92%E5%BA%8F%E6%98%AF%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84"><span class="nav-number">1.5.3.</span> <span class="nav-text">作业排序是不确定的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="nav-number">1.6.</span> <span class="nav-text">流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BA%94%E6%80%A7%EF%BC%8C%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.6.1.</span> <span class="nav-text">反应性，事件驱动系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E5%91%98%E4%B8%8E%E9%A2%91%E9%81%93"><span class="nav-number">1.6.2.</span> <span class="nav-text">演员与频道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%BC%98%E5%8A%BF"><span class="nav-number">1.7.</span> <span class="nav-text">流水线优势</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81"><span class="nav-number">1.7.1.</span> <span class="nav-text">没有共享状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%8A%B6%E6%80%81%E7%9A%84%E5%B7%A5%E4%BA%BA"><span class="nav-number">1.7.2.</span> <span class="nav-text">有状态的工人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%A1%AC%E4%BB%B6%E6%95%B4%E5%90%88"><span class="nav-number">1.7.3.</span> <span class="nav-text">更好的硬件整合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E8%AE%A2%E8%B4%AD%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.7.4.</span> <span class="nav-text">可以订购工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E8%A3%85%E7%BA%BF%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.8.</span> <span class="nav-text">组装线的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E5%B9%B6%E8%A1%8C"><span class="nav-number">1.9.</span> <span class="nav-text">功能并行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%AA%E7%A7%8D%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E6%9C%80%E5%A5%BD"><span class="nav-number">1.10.</span> <span class="nav-text">哪种并发模型最好</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZP</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/20/concurrency-models/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZP">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          并发模型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-20 17:28:49" itemprop="dateCreated datePublished" datetime="2020-07-20T17:28:49+08:00">2020-07-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-07-21 17:39:55" itemprop="dateModified" datetime="2020-07-21T17:39:55+08:00">2020-07-21</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="并发模型"><a href="#并发模型" class="headerlink" title="并发模型"></a>并发模型</h1><ul>
+<li><a href="#%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7">并发模型和分布式系统的相似性</a></li>
+<li><a href="#%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81%E4%B8%8E%E5%88%86%E7%A6%BB%E7%8A%B6%E6%80%81">共享状态与分离状态</a></li>
+<li><a href="#Parallel-Wokers">Parallel-Wokers</a><ul>
+<li><a href="#Parallel-Wokers%E4%BC%98%E5%8A%BF">Parallel-Wokers优势</a></li>
+<li>parallel-workers劣势<ul>
+<li><a href="#%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81%E4%BC%9A%E5%8F%98%E5%BE%97%E5%A4%8D%E6%9D%82">共享状态会变得复杂</a></li>
+<li><a href="#%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84workers">无状态的workers</a></li>
+<li><a href="#%E4%BB%BB%E5%8A%A1%E9%A1%BA%E5%BA%8F%E6%98%AF%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84">任务顺序是不确定的</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>流水线<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/concurrency-models.html#reactive-event-driven-systems">反应性，事件驱动系统</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/concurrency-models.html#actors-vs-channels">演员与频道</a></li>
+</ul>
+</li>
+<li>流水线优势<ul>
+<li><a href="#%E6%B2%A1%E6%9C%89%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81">没有共享状态</a></li>
+<li><a href="#%E6%9C%89%E7%8A%B6%E6%80%81%E7%9A%84workers">有状态的workers</a></li>
+<li><a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%A1%AC%E4%BB%B6%E6%95%B4%E5%90%88">更好的硬件整合</a></li>
+<li><a href="#%E4%BB%BB%E5%8A%A1%E5%8F%AF%E4%BB%A5%E6%8E%92%E5%BA%8F">任务可以排序</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%84%E8%A3%85%E7%BA%BF%E7%9A%84%E7%BC%BA%E7%82%B9">组装线的缺点</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD%E5%B9%B6%E8%A1%8C">功能并行</a></li>
+<li><a href="#%E5%93%AA%E7%A7%8D%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E6%9C%80%E5%A5%BD">哪种并发模型最好</a></li>
+</ul>
+<p>并发系统可以通过使用不同的<em>并发模型</em>来实现。一个<em>并发模型</em>指定了系统中的线程如何通过协作来完成分配给它们的作业。不同的并发模型以不同的方式拆分任务，同时线程间的协作和通信方式也不相同。本并发模型教程将在撰写本文时（2015年至2019年）更深入地研究最流行的并发模型。</p>
+<h2 id="并发模型和分布式系统的相似性"><a href="#并发模型和分布式系统的相似性" class="headerlink" title="并发模型和分布式系统的相似性"></a>并发模型和分布式系统的相似性</h2><p>本文中描述的并发模型类似于分布式系统中使用的不同体系结构。在并发系统中，不同的线程彼此通信。在分布式系统中，不同的进程相互通信（进程可存在于不同的计算机上）。本质上，线程和进程彼此非常相似。这就是为什么并发模型通常看起来与分布式系统体系结构相似的原因。</p>
+<p>当然，分布式系统还面临着额外的挑战，即网络可能会失败，或者远程计算机或进程关闭等。但是大型服务器上运行的并发系统也可能会遇到类似的问题，如CPU发生故障，网卡发生故障，磁盘发生故障等。虽然失败的可能性很低，但理论上仍会发生。</p>
+<p>由于并发模型与分布式系统体系结构相似，因此它们经常可以相互借鉴。例如，用于在workers（线程）之间分配工作的模型通常类似于<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/software-architecture/load-balancing.html">分布式系统中的负载平衡</a>模型。错误处理技术（例如日志记录，故障转移，任务的幂等）也是如此。</p>
+<p>【注：幂等性，一个幂等操作的特点是其任意多次执行所产生的影响均与一次执行的影响相同】</p>
+<h2 id="共享状态与分离状态"><a href="#共享状态与分离状态" class="headerlink" title="共享状态与分离状态"></a>共享状态与分离状态</h2><p>不管组件和线程是设计为在线程之间共享状态，还是保持分离状态永远不会在线程之间共享，这都是一个并发模型的关注点，</p>
+<p><em>共享状态</em>意味着系统中的不同线程间将共享某些状态。<em>状态</em>是指一些数据，通常是一个或多个对象或类似的东西。当线程共享状态时，可能会出现<a href="#">Post not found: race-conditons</a>和<a href="#">Post not found: deadlock</a>等问题。当然，这取决于线程如何使用和访问共享对象。</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-0-1.png" alt="具有共享状态的两个线程。"></p>
+<p><em>分离状态</em>意味着系统中的不同线程间不共享任何状态。万一不同的线程需要通信，它们可以通过交换不可变对象或发送对象（或数据）的副本（拷贝）来进行通信。因此，当没有两个线程写入同一对象（数据/状态）时，可以避免大多数常见的并发问题。</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-0-2.png" alt="具有独立状态的两个线程。"></p>
+<p>使用分离状态的并发设计通常可以使代码的某些部分更易于实现和推理，因为您知道只有一个线程将写入给定对象。您不必担心并发访问该对象。但是，使用分离状态的并发性设计您可能需要更全面地考虑应用程序设计。我觉得这是值得的。我个人更喜欢单独的状态并发设计。</p>
+<h2 id="Parallel-Wokers"><a href="#Parallel-Wokers" class="headerlink" title="Parallel-Wokers"></a>Parallel-Wokers</h2><p>第一个并发模型是我所说的<em>并行工作器</em>模型。传入的任务分配给不同的workers。这是说明<em>并行工作器</em>并发模型的图：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-1.png" alt="并行工作者并发模型-基本思想。"></p>
+<p>在<em>并行工作器</em>并发模型中，委托人(Delegator) 将传入的作业分配给不同的Worker。每个Worker完成全部工作。这些Worker并行在不同的线程中运行或者不同的CPU上运行。</p>
+<p>如果并行worker模型通过汽车工厂实现，则每辆汽车将由一名worker生产。worker将获得要制造的汽车的规格，并会从头到尾制造所有东西。</p>
+<p><em>并行工作器</em>模型是Java应用程序中最常用的并发模型（尽管正在发生变化）。<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-util-concurrent/index.html">java.util.concurrent Java包</a> 中的许多并发实用<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-util-concurrent/index.html">程序</a>都是设计用于此模型的。您还可以在Java Enterprise Edition应用程序服务器的设计中看到此模型的痕迹。</p>
+<h2 id="Parallel-Wokers优势"><a href="#Parallel-Wokers优势" class="headerlink" title="Parallel-Wokers优势"></a>Parallel-Wokers优势</h2><p>Parallel-Wokers并发模型的优点是易于理解。为了增加应用程序的并行化，您只需添加更多工作程序即可。</p>
+<p>例如，如果你正在做一个网络爬虫，可以试试使用不同数量的wokers抓取到一定数量的页面，然后看看多少数量的wokers消耗的时间最短（意味着性能最高）。由于网络爬虫是一个 IO 密集型工作，最终结果很有可能是你电脑中的每个 CPU 或核心分配了几个线程。每个 CPU 若只分配一个线程可能有点少，因为在等待数据下载的过程中 CPU 将会空闲大量时间。</p>
+<h2 id="Parallel-Wokers劣势"><a href="#Parallel-Wokers劣势" class="headerlink" title="Parallel-Wokers劣势"></a>Parallel-Wokers劣势</h2><p>但是，Parallel-Wokers并发模型具有一些隐藏在简单表面下的缺点。我将在以下各节中解释最明显的缺点。</p>
+<h3 id="共享状态会变得复杂"><a href="#共享状态会变得复杂" class="headerlink" title="共享状态会变得复杂"></a>共享状态会变得复杂</h3><p>实际上，Parallel-Wokers并发模型比上面说明的要复杂一些。共享workers经常需要访问内存或共享数据库中的某种共享数据。下图显示了Parallel-Wokers并发模型的复杂：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-2.png" alt="说明共享状态的并行工作程序并发模型"></p>
+<p>有些共享状态是在像作业队列这样的通信机制下。但也有一些共享状态是业务数据，数据缓存，数据库连接池等。</p>
+<p>一旦共享状态潜入到Parallel-Wokers并发模型中，它就会开始变得复杂。线程需要以某种方式存取共享数据，以确保这个线程的修改能够对其他线程可见（将其推送到主内存中，而不仅仅是停留在执行该线程的CPU的CPU缓存中）。线程需要避免<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/race-conditions-and-critical-sections.html">竞态条件</a>， <a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/deadlock.html">死锁</a>和许多其他共享状态并发问题。</p>
+<p>此外，在等待访问共享数据结构时，线程之间的互相等待将会丢失并行性。许多并发数据结构是阻塞的，意味着在任何一个时间只有一个或者很少的线程能够访问。这样会导致在这些共享数据结构上出现竞争状态。在执行需要访问共享数据结构部分的代码时，高竞争基本上会导致执行时出现一定程度的串行化。</p>
+<p>现代<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/non-blocking-algorithms.html">的非阻塞并发算法</a>可以减少竞争并提高性能，但是非阻塞算法很难实现。</p>
+<p>可持久化的数据结构是另一种选择。在修改的时候，可持久化的数据结构总是保护它的前一个版本不受影响。因此，如果多个线程指向同一个可持久化的数据结构，并且其中一个线程进行了修改，进行修改的线程会获得一个指向新结构的引用。所有其他线程保留对旧结构的引用，该旧结构仍保持不变，因此是一致的。Scala编程包含几个持久数据结构。</p>
+<p>【注：这里的可持久化数据结构不是指持久化存储，而是一种数据结构，比如 Java 中的 String 类，以及 CopyOnWriteArrayList 类，具体可<a target="_blank" rel="noopener" href="http://www.cnblogs.com/tedzhao/archive/2008/11/12/1332112.html">参考</a>】</p>
+<p>虽然可持久化的数据结构在解决共享数据结构的并发修改时显得很优雅，但是可持久化的数据结构的表现往往不尽人意。</p>
+<p>例如，一个持久链表会将所有新元素添加到列表的开头，并返回对新添加元素的引用（该引用随后指向列表的其余部分）。所有其他线程仍保留对链表中先前第一个元素的引用，并且对这些线程而言，链表保持不变。他们看不到新添加的元素。</p>
+<p>这种可持久化的链表采用链表来实现。不幸的是链表在现代硬件上表现的不太好。链表中得每个元素都是一个独立的对象，这些对象可以遍布在整个计算机内存中。现代 CPU 能够更快的进行顺序访问，所以你可以在现代的硬件上用数组实现的列表，以获得更高的性能。数组可以顺序的保存数据。CPU 缓存能够一次加载数组的一大块进行缓存，一旦加载完成 CPU 就可以直接访问缓存中的数据。这对于元素散落在 RAM 中的链表来说，不太可能做得到。</p>
+<h3 id="无状态的Workers"><a href="#无状态的Workers" class="headerlink" title="无状态的Workers"></a>无状态的Workers</h3><p>共享状态可以由系统中的其他线程修改。因此，Workers必须在每次需要数据时重新读取数据，以确保它在最新副本上正常工作。不管共享状态是保存在内存中的还是在外部数据库中都是如此。不在内部保持状态（但每次需要时都会重新读取<em>状态</em>）的worker称为<em>无状态</em>worker。</p>
+<p>每次需要时重新读取数据都会变慢，特别是如果状态存储在外部数据库中。</p>
+<h3 id="作业排序是不确定的"><a href="#作业排序是不确定的" class="headerlink" title="作业排序是不确定的"></a>作业排序是不确定的</h3><p>并行工作程序模型的另一个缺点是作业执行顺序是不确定的。无法保证首先执行或最后执行哪些作业。作业A可以在作业B之前提供给工人，但作业B可以在作业A之前执行。</p>
+<p>并行工作程序模型的不确定性使得在任何给定时间点都难以推理系统状态。这也使得很难（如果不是不可能的话）保证一项工作先于另一项工作发生。</p>
+<h2 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h2><p>第二种并发模型是我所说的<em>组装线</em>并发模型。我选择该名称只是为了适应早先的“并行工作者”隐喻。其他开发人员根据平台/社区使用其他名称（例如，反应系统或事件驱动系统）。这是说明组装线并发模型的图：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-3.png" alt="流水线并发模型。"></p>
+<p>工人的组织就像工厂中装配线的工人一样。每个工人只完成全部工作的一部分。完成该部分后，工人会将工作转发给下一个工人。</p>
+<p>每个工作程序都在自己的线程中运行，并且不与其他工作程序共享任何状态。有时也称为无<em>共享</em>并发模型。</p>
+<p>使用组装线并发模型的系统通常设计为使用非阻塞IO。非阻塞IO意味着当工作进程开始IO操作（例如，从网络连接读取文件或数据）时，工作进程不会等待IO调用完成。IO操作速度很慢，因此等待IO操作完成会浪费CPU时间。同时，CPU可能正在做其他事情。IO操作完成后，IO操作的结果（例如，读取的数据或写入的数据的状态）将传递给另一个工作程序。</p>
+<p>使用非阻塞IO，IO操作将确定工作线程之间的边界。在必须启动IO操作之前，工作人员会尽力而为。然后，它放弃了对工作的控制。IO操作完成后，装配线中的下一个工作人员将继续进行该作业，直到必须开始IO操作等为止。</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-4.png" alt="具有无阻塞IO操作的组装线并发模型标记了工作人员职责之间的界限。"></p>
+<p>实际上，这些作业可能不会沿着一条装配线流动。由于大多数系统可以执行一项以上的工作，因此工作会根据需要完成的工作在不同的工作人员之间流动。实际上，可能同时存在多个不同的虚拟装配线。这实际上就是流水线系统中的工作流的样子：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-5.png" alt="具有多条装配线的装配线并发模型。"></p>
+<p>甚至可以将作业转发给多个工人进行并行处理。例如，可以将作业转发给作业执行者和作业记录器。此图说明了三个装配线如何通过将其作业转发给同一工人（中间装配线中的最后一个工人）来完成：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-6.png" alt="流水线并发模型显示了转发给多名工人的工作。"></p>
+<p>流水线甚至比这还要复杂。</p>
+<h3 id="反应性，事件驱动系统"><a href="#反应性，事件驱动系统" class="headerlink" title="反应性，事件驱动系统"></a>反应性，事件驱动系统</h3><p>使用装配线并发模型的<em>系统</em>有时也称为<em>反应系统</em>或 <em>事件驱动系统</em>。系统的工作人员会对系统中发生的事件做出反应，这些事件是从外界接收到的，或者是其他工作人员发出的。事件的示例可能是传入的HTTP请求，或者某个文件已完成加载到内存等。</p>
+<p>在撰写本文时，有许多有趣的反应式/事件驱动平台可用，将来还会有更多。一些更受欢迎的似乎是：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/vert.x/index.html">Vert.x</a></li>
+<li>阿卡</li>
+<li>Node.JS（JavaScript）</li>
+</ul>
+<p>我个人认为Vert.x非常有趣（特别是对于像我这样的Java / JVM恐龙）。</p>
+<h3 id="演员与频道"><a href="#演员与频道" class="headerlink" title="演员与频道"></a>演员与频道</h3><p>角色和通道是装配线（或反应/事件驱动）模型的两个类似示例。</p>
+<p>在演员模型中，每个工人都称为<em>演员</em>。Actor可以直接彼此发送消息。消息是异步发送和处理的。如前所述，Actor可用于实现一个或多个作业处理装配线。这是说明参与者模型的图：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-7.png" alt="使用参与者实现的流水线并发模型。"></p>
+<p>在渠道模型中，工作人员不会直接相互通信。相反，他们将消息（事件）发布在不同的渠道上。然后，其他工作人员可以在这些频道上收听消息，而发件人不知道谁在收听。这是说明通道模型的图：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-8.png" alt="使用渠道实现的流水线并发模型。"></p>
+<p>在撰写本文时，渠道模型对我来说似乎更灵活。工人无需知道稍后在装配线中将处理什么工作的工人。它只需要知道将作业转发到哪个渠道（或将消息发送到等等）。频道上的侦听器可以订阅和取消订阅，而不会影响工作人员写入频道。这允许工人之间的联轴器稍松一些。</p>
+<h2 id="流水线优势"><a href="#流水线优势" class="headerlink" title="流水线优势"></a>流水线优势</h2><p>与并行工作程序模型相比，组装线并发模型具有多个优点。我将在以下各节中介绍最大的优势。</p>
+<h3 id="没有共享状态"><a href="#没有共享状态" class="headerlink" title="没有共享状态"></a>没有共享状态</h3><p>工作人员与其他工作人员不共享任何状态的事实意味着，无需考虑并发访问共享状态可能引起的所有并发问题，就可以实现他们。这使实施工人变得容易得多。您将工作程序实现为好像是执行该工作的唯一线程-本质上是单线程实现。</p>
+<h3 id="有状态的工人"><a href="#有状态的工人" class="headerlink" title="有状态的工人"></a>有状态的工人</h3><p>由于工作人员知道没有其他线程修改其数据，因此工作人员可以是有状态的。有状态的意思是他们可以将需要操作的数据保留在内存中，仅将更改写回最终的外部存储系统。因此，有状态工人通常比无状态工人更快。</p>
+<h3 id="更好的硬件整合"><a href="#更好的硬件整合" class="headerlink" title="更好的硬件整合"></a>更好的硬件整合</h3><p>单线程代码的优势在于，它通常与底层硬件的工作方式更好地相符。首先，当您可以假定代码以单线程模式执行时，通常可以创建更优化的数据结构和算法。</p>
+<p>其次，单线程有状态工作者可以如上所述在内存中缓存数据。当将数据缓存在内存中时，也更有可能将该数据也缓存在执行线程的CPU的CPU缓存中。这样可以更快地访问缓存的数据。</p>
+<p>当我以自然受益于底层硬件工作方式的方式编写代码时，我将其称为<em>硬件一致性</em>。一些开发商称这种<em>机械同情</em>。我更喜欢“硬件一致性”一词，因为计算机几乎没有机械部件，在这种情况下，“同情”一词被用作“更好地匹配”的隐喻，我相信“符合”一词可以很好地传达。无论如何，这是挑剔的。使用您喜欢的任何术语。</p>
+<h3 id="可以订购工作"><a href="#可以订购工作" class="headerlink" title="可以订购工作"></a>可以订购工作</h3><p>可以根据组装线并发模型以确保作业排序的方式实现并发系统。作业排序使在任何给定时间点推断系统状态变得更加容易。此外，您可以将所有传入的作业写入日志。然后，在系统的任何部分发生故障的情况下，可以使用此日志从头开始重建系统状态。作业以特定顺序写入日志，并且该顺序成为保证的作业顺序。这是这样的设计的外观：</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/concurrency-models-8.png" alt="具有作业记录器的流水线并发模型。"></p>
+<p>实施保证的工作订单不一定很容易，但是通常是可能的。如果可以的话，它可以极大地简化备份，还原数据，复制数据等任务，因为所有这些都可以通过日志文件来完成。</p>
+<h2 id="组装线的缺点"><a href="#组装线的缺点" class="headerlink" title="组装线的缺点"></a>组装线的缺点</h2><p>组装流水线并发模型的主要缺点是，作业的执行通常分散在多个工作人员上，因此会分散在项目中的多个类上。因此，很难确切地知道给定作业正在执行什么代码。</p>
+<p>编写代码也可能会更困难。辅助代码有时被编写为回调处理程序。具有许多嵌套回调处理程序的代码可能会导致某些开发人员称之为<em>回调地狱</em>。回调地狱只是意味着很难跟踪所有回调中代码的实际作用，以及确保每个回调都可以访问所需的数据。</p>
+<p>使用并行工作程序并发模型，这往往会更容易。您可以打开工作程序代码，并从头到尾阅读几乎执行的代码。当然，并行工作程序代码也可以散布在许多不同的类上，但是执行顺序通常更容易从代码中读取。</p>
+<h2 id="功能并行"><a href="#功能并行" class="headerlink" title="功能并行"></a>功能并行</h2><p>功能并行是第三种并发模型，最近（2015年）被广泛讨论。</p>
+<p>函数并行性的基本思想是使用函数调用实现程序。功能可以看作是相互发送消息的“代理”或“角色”，就像在组装线并发模型（AKA反应或事件驱动系统）中一样。当一个函数调用另一个函数时，这类似于发送消息。</p>
+<p>复制传递给该函数的所有参数，因此接收函数之外的任何实体都无法操纵该数据。该复制对于避免共享数据出现争用情况至关重要。这使得函数执行类似于原子操作。每个函数调用都可以独立于任何其他函数调用执行。</p>
+<p>当每个函数调用可以独立执行时，每个函数调用可以在单独的CPU上执行。这就是说，功能上实现的算法可以在多个CPU上并行执行。</p>
+<p>使用Java 7，我们获得了<code>java.util.concurrent</code>包含<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-util-concurrent/java-fork-and-join-forkjoinpool.html">ForkAndJoinPool</a>的软件包，该软件包 可以帮助您实现类似于功能并行的功能。使用Java 8，我们获得了并行<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-collections/streams.html">流</a> ，可以帮助您并行化大型集合的迭代。请记住，有些开发人员对此表示批评<code>ForkAndJoinPool</code>（您可以在本<code>ForkAndJoinPool</code>教程中找到批评的链接）。</p>
+<p>关于函数并行性的难点是知道要并行调用哪些函数。跨CPU协调函数调用会带来开销。一个功能完成的工作单元必须具有一定的大小，才能负担此开销。如果函数调用很小，则尝试并行化它们实际上可能比单线程，单CPU执行慢。</p>
+<p>根据我的理解（一点都不完美），您可以使用反应性，事件驱动的模型来实现算法，并实现类似于功能并行性的工作分解。使用均匀驱动的模型，您可以更好地控制要并行化的对象和数量（在我看来）。</p>
+<p>此外，只有在该任务当前是程序唯一执行的任务时，才有意义地将任务分配给多个CPU，并产生开销。但是，如果系统正在同时执行多个其他任务（例如，Web服务器，数据库服务器和许多其他系统都在执行），则尝试并行化单个任务毫无意义。无论如何，计算机中的其他CPU都将忙于其他任务，因此没有理由尝试以较慢的，功能上并行的任务来打扰它们。组装流水线（反应式）并发模型可能会更好，因为它具有较少的开销（以单线程模式顺序执行），并且与底层硬件的工作方式更好地兼容。</p>
+<h2 id="哪种并发模型最好"><a href="#哪种并发模型最好" class="headerlink" title="哪种并发模型最好"></a>哪种并发模型最好</h2><p>那么，哪种并发模型更好？</p>
+<p>通常，答案是这取决于系统应该执行的操作。如果您的工作自然是并行的，独立的并且不需要共享状态，则可以使用并行工作器模型来实现系统。</p>
+<p>但是，许多工作并非自然而然地平行和独立。对于这些类型的系统，我相信流水线并发模型的优点要大于缺点，并且要比并行工作器模型多。</p>
+<p>您甚至不必自己编写所有组装线基础设施的代码。像<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/vert.x/index.html">Vert.x</a>这样的现代平台 已经为您实现了很多功能。我个人将为下一个项目探索在Vert.x等平台上运行的设计。我觉得Java EE不再具有优势。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Concurrency/" rel="tag"># Concurrency</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/20/costs/" rel="prev" title="多线程成本">
+                  <i class="fa fa-chevron-left"></i> 多线程成本
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/07/20/same-threading/" rel="next" title="同一线程">
+                  同一线程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZP</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

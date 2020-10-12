@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+
+  <meta name="description" content="高性能java缓存库-CaffeineCaffeine简介Caffeine基于java8的高性能，接近最优的缓存库。Caffeine提供的内存缓存使用参考Google guava的API。Caffeine是基于Google guava和 ConcurrentLinkedHashMap的设计经验上改进的成果。 Caffeine可以通过建造者模式灵活的组合以下特性： 通过异步自动加载实体到缓存中基于大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cache">
+<meta property="og:url" content="http://example.com/2020/07/09/Cache/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="高性能java缓存库-CaffeineCaffeine简介Caffeine基于java8的高性能，接近最优的缓存库。Caffeine提供的内存缓存使用参考Google guava的API。Caffeine是基于Google guava和 ConcurrentLinkedHashMap的设计经验上改进的成果。 Caffeine可以通过建造者模式灵活的组合以下特性： 通过异步自动加载实体到缓存中基于大">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-09T03:10:01.000Z">
+<meta property="article:modified_time" content="2020-07-09T03:43:32.870Z">
+<meta property="article:author" content="ZP">
+<meta property="article:tag" content="Cache">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/07/09/Cache/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Cache | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BDjava%E7%BC%93%E5%AD%98%E5%BA%93-Caffeine"><span class="nav-number">1.</span> <span class="nav-text">高性能java缓存库-Caffeine</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Caffeine%E7%AE%80%E4%BB%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">Caffeine简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E7%AD%96%E7%95%A5"><span class="nav-number">1.0.2.</span> <span class="nav-text">加载策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="nav-number">1.0.3.</span> <span class="nav-text">回收策略</span></a></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ZP</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/09/Cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZP">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cache
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-07-09 11:10:01 / 修改时间：11:43:32" itemprop="dateCreated datePublished" datetime="2020-07-09T11:10:01+08:00">2020-07-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="高性能java缓存库-Caffeine"><a href="#高性能java缓存库-Caffeine" class="headerlink" title="高性能java缓存库-Caffeine"></a>高性能java缓存库-Caffeine</h2><h4 id="Caffeine简介"><a href="#Caffeine简介" class="headerlink" title="Caffeine简介"></a>Caffeine简介</h4><p>Caffeine基于java8的高性能，接近最优的缓存库。Caffeine提供的内存缓存使用参考Google guava的API。Caffeine是基于Google guava和 ConcurrentLinkedHashMap的设计经验上改进的成果。</p>
+<p>Caffeine可以通过建造者模式灵活的组合以下特性：</p>
+<p>通过异步自动加载实体到缓存中<br>基于大小的回收策略<br>基于时间的回收策略<br>自动刷新<br>key自动封装虚引用<br>value自动封装弱引用或软引用<br>实体过期或被删除的通知<br>写入外部资源<br>统计累计访问缓存</p>
+<h4 id="加载策略"><a href="#加载策略" class="headerlink" title="加载策略"></a>加载策略</h4><p>Caffeine提供了3种加载策略:手动加载，同步加载，异步加载</p>
+<p>手动加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Cache&lt;Key, Graph&gt; cache &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .expireAfterWrite(10, TimeUnit.MINUTES)</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .build();</span><br><span class="line">  </span><br><span class="line">&#x2F;&#x2F; 检索一个entry，如果没有则为null</span><br><span class="line">Graph graph &#x3D; cache.getIfPresent(key);</span><br><span class="line">&#x2F;&#x2F; 检索一个entry，如果entry为null，则通过key创建一个entry并加入缓存</span><br><span class="line">graph &#x3D; cache.get(key, k -&gt; createExpensiveGraph(key));</span><br><span class="line">&#x2F;&#x2F; 插入或更新一个实体</span><br><span class="line">cache.put(key, graph);</span><br><span class="line">&#x2F;&#x2F; 移除一个实体</span><br><span class="line">cache.invalidate(key);</span><br></pre></td></tr></table></figure>
+
+<p>同步加载<br>构造Cache时候，build方法传入一个CacheLoader实现类。实现load方法，通过key加载value。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">LoadingCache&lt;Key, Graph&gt; cache &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .expireAfterWrite(10, TimeUnit.MINUTES)</span><br><span class="line">    .build(key -&gt; createExpensiveGraph(key));</span><br><span class="line">&#x2F;&#x2F;如果缓存种没有对应的value，通过createExpensiveGraph方法加载</span><br><span class="line">Graph graph &#x3D; cache.get(key);</span><br><span class="line"></span><br><span class="line">Map&lt;Key, Graph&gt; graphs &#x3D; cache.getAll(keys);</span><br><span class="line">异步加载</span><br><span class="line">AsyncLoadingCache&lt;Key, Graph&gt; cache &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .expireAfterWrite(10, TimeUnit.MINUTES)</span><br><span class="line">    .buildAsync((key, executor) -&gt; createExpensiveGraphAsync(key, executor));</span><br><span class="line">CompletableFuture&lt;Graph&gt; graph &#x3D; cache.get(key);</span><br><span class="line">CompletableFuture&lt;Map&lt;Key, Graph&gt;&gt; graphs &#x3D; cache.getAll(keys);</span><br></pre></td></tr></table></figure>
+<p>AsyncLoadingCache 是 LoadingCache 的变体， 可以异步计算实体在一个线程池(Executor)上并且返回 CompletableFuture.</p>
+<h4 id="回收策略"><a href="#回收策略" class="headerlink" title="回收策略"></a>回收策略</h4><p>Caffeine提供了3种回收策略：基于大小回收，基于时间回收，基于引用回收</p>
+<p>基于大小回收<br>// 基于实体数量淘汰实体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LoadingCache&lt;Key, Graph&gt; graphs &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .build(key -&gt; createExpensiveGraph(key));</span><br><span class="line">&#96;&#96;&#96;    </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过权重来计算，每个实体都有不同的权重，总权重到达最高时淘汰实体。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .maximumWeight(10_000)<br>    .weigher((Key key, Graph graph) -&gt; graph.vertices().size())<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">到达最大大小时淘汰最近最少使用的实体</span><br><span class="line"></span><br><span class="line">基于时间回收</span><br><span class="line">实体被访问之后，在实体被读或被写后的一段时间后过期</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .expireAfterAccess(5, TimeUnit.MINUTES)<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">基于写之后，在实体被写入后的一段时间后过期</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .expireAfterWrite(10, TimeUnit.MINUTES)<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">自定义策略Expiry，可以自定义在实体被读，被更新，被创建后的时间过期。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .expireAfter(new Expiry&lt;Key, Graph&gt;() {<br>      public long expireAfterCreate(Key key, Graph graph, long currentTime) {<br>        // Use wall clock time, rather than nanotime, if from an external resource<br>        long seconds = graph.creationDate().plusHours(5)<br>            .minus(System.currentTimeMillis(), MILLIS)<br>            .toEpochSecond();<br>        return TimeUnit.SECONDS.toNanos(seconds);<br>      }<br>      public long expireAfterUpdate(Key key, Graph graph,<br>          long currentTime, long currentDuration) {<br>        return currentDuration;<br>      }<br>      public long expireAfterRead(Key key, Graph graph,<br>          long currentTime, long currentDuration) {<br>        return currentDuration;<br>      }<br>    })<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">基于引用回收</span><br><span class="line">java种有四种引用：强引用，软引用，弱引用和虚引用，caffeine可以将值封装成弱引用或软引用。</span><br><span class="line">软引用：如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。</span><br><span class="line">弱引用：弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .weakKeys()<br>    .weakValues()<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .softValues()<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#### 自动刷新</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .maximumSize(10_000)<br>    .refreshAfterWrite(1, TimeUnit.MINUTES)<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在写后的持续时间过后，调用createExpensiveGraph刷新</span><br><span class="line"></span><br><span class="line">#### 移除通知</span><br></pre></td></tr></table></figure>
+<p>Cache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .removalListener((Key key, Graph graph, RemovalCause cause) -&gt;<br>        System.out.printf(“Key %s was removed (%s)%n”, key, cause))<br>    .build();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">通过removalListener添加实体移除监听器</span><br><span class="line"></span><br><span class="line">#### 写到外部存储</span><br><span class="line">通过CacheWriter 可以将缓存回写的外部存储中。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>  .writer(new CacheWriter&lt;Key, Graph&gt;() {<br>    @Override public void write(Key key, Graph graph) {<br>      // 写入到外部存储或二级缓存<br>    }<br>    @Override public void delete(Key key, Graph graph, RemovalCause cause) {<br>      // 删除外部存储或者二级缓存<br>    }<br>  })<br>  .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">使用场景</span><br><span class="line"></span><br><span class="line">#### 缓存同步数据库</span><br><span class="line">多级缓存同步</span><br><span class="line">注意，CacheWriter不能与弱键或AsyncLoadingCache一起使用</span><br><span class="line"></span><br><span class="line">#### 统计缓存使用情况</span><br></pre></td></tr></table></figure>
+<p>Cache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .maximumSize(10_000)<br>    .recordStats()<br>    .build();</p>
+<pre><code>通过使用Caffeine.recordStats(), 可以转化成一个统计的集合. 通过 Cache.stats() 返回一个CacheStats。CacheStats提供以下统计方法
+
+hitRate(): 返回缓存命中率
+evictionCount(): 缓存回收数量
+averageLoadPenalty(): 加载新值的平均时间</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Cache/" rel="tag"># Cache</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/07/14/%E3%80%8A%20JAVA%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%8B/" rel="next" title="《JAVA并发编程》">
+                  《JAVA并发编程》 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZP</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
