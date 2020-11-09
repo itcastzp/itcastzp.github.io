@@ -22,52 +22,29 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="《 JAVA并发编程》并发性与多线程介绍在过去单 CPU 时代，单任务在一个时间点只能执行单一程序。之后发展到多任务阶段，计算机能在同一时间点并行执行多任务或多进程。虽然并不是真正意义上的“同一时间点”，而是多个任务或进程共享一个 CPU，并交由操作系统来完成多任务间对 CPU 的运行切换，以使得每个任务都有机会获得一定的时间片运行。  随着多任务对软件开发者带来的新挑战，程序不在能假设独占所有的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《JAVA并发编程》">
-<meta property="og:url" content="http://example.com/2020/07/14/%E3%80%8A%20JAVA%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%8B/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="《 JAVA并发编程》并发性与多线程介绍在过去单 CPU 时代，单任务在一个时间点只能执行单一程序。之后发展到多任务阶段，计算机能在同一时间点并行执行多任务或多进程。虽然并不是真正意义上的“同一时间点”，而是多个任务或进程共享一个 CPU，并交由操作系统来完成多任务间对 CPU 的运行切换，以使得每个任务都有机会获得一定的时间片运行。  随着多任务对软件开发者带来的新挑战，程序不在能假设独占所有的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/TIM%E6%88%AA%E5%9B%BE20200714141526.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/TIM%E6%88%AA%E5%9B%BE20200714141953.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/TIM%E6%88%AA%E5%9B%BE20200714142142.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/TIM%E6%88%AA%E5%9B%BE20200714142259.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/14.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/15.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/22.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/55.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/333.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/44.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/1111118.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/2222222.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/1111111.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/112313213121.png">
-<meta property="article:published_time" content="2020-07-14T02:11:32.000Z">
-<meta property="article:modified_time" content="2020-07-20T08:59:55.200Z">
 <meta property="article:author" content="ZP">
-<meta property="article:tag" content="Concurrency">
-<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/itcastzp/PicgoBreeding/master/img/TIM%E6%88%AA%E5%9B%BE20200714141526.png">
 
 
-<link rel="canonical" href="http://example.com/2020/07/14/%E3%80%8A%20JAVA%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%8B/">
+<link rel="canonical" href="http://example.com/page/2/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>《JAVA并发编程》 | Hexo</title>
+  <title>Hexo</title>
   
 
 
@@ -202,7 +179,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -214,7 +191,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%8A-JAVA%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">《 JAVA并发编程》</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E6%80%A7%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">并发性与多线程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91%E6%80%A7"><span class="nav-number">1.1.1.</span> <span class="nav-text">Java 的多线程和并发性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD"><span class="nav-number">1.2.</span> <span class="nav-text">线程中断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-interrupt-%E4%B8%AD%E6%96%AD%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用 interrupt()中断线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%85%E5%86%B3%E4%B8%AD%E6%96%AD"><span class="nav-number">1.2.2.</span> <span class="nav-text">待决中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Thread-interrupted-%E6%96%B9%E6%B3%95%E5%88%A4%E6%96%AD%E4%B8%AD%E6%96%AD%E7%8A%B6%E6%80%81"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用 Thread.interrupted()方法判断中断状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%8C%82%E8%B5%B7%E3%80%81%E6%81%A2%E5%A4%8D%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="nav-number">1.3.</span> <span class="nav-text">线程挂起、恢复与终止</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">挂起和恢复线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">终止线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E"><span class="nav-number">1.4.</span> <span class="nav-text">守护线程与线程阻塞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.4.1.</span> <span class="nav-text">守护线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E9%98%BB%E5%A1%9E"><span class="nav-number">1.4.2.</span> <span class="nav-text">线程阻塞</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile-%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">Volatile 关键字（上）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile-%E7%94%A8%E5%A4%84%E8%AF%B4%E6%98%8E"><span class="nav-number">1.5.1.</span> <span class="nav-text">volatile 用处说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.5.2.</span> <span class="nav-text">示例程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%8F%E6%96%99%E4%B9%8B%E5%A4%96%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.3.</span> <span class="nav-text">意料之外的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">1.5.4.</span> <span class="nav-text">问题分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile-%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">Volatile 关键字（下）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5-Java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%881%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">深入 Java 内存模型（1）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#happen%E2%80%94before-%E8%A7%84%E5%88%99%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.7.1.</span> <span class="nav-text">happen—before 规则介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-%E7%A8%8B%E5%BA%8F%E6%AC%A1%E5%BA%8F%E8%A7%84%E5%88%99%EF%BC%9A%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%8D%95%E7%8B%AC%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B8%AD%EF%BC%8C%E6%8C%89%E7%85%A7%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E9%A1%BA%E5%BA%8F%EF%BC%8C%EF%BC%88%E6%97%B6%E9%97%B4%E4%B8%8A%EF%BC%89%E5%85%88%E6%89%A7%E8%A1%8C%E7%9A%84%E6%93%8D%E4%BD%9C-happen%E2%80%94before%EF%BC%88%E6%97%B6%E9%97%B4%E4%B8%8A%EF%BC%89%E5%90%8E%E6%89%A7%E8%A1%8C%E7%9A%84%E6%93%8D%E4%BD%9C%E3%80%82"><span class="nav-number">1.7.1.0.0.1.</span> <span class="nav-text">⦁    程序次序规则：在一个单独的线程中，按照程序代码的执行流顺序，（时间上）先执行的操作 happen—before（时间上）后执行的操作。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-%E7%AE%A1%E7%90%86%E9%94%81%E5%AE%9A%E8%A7%84%E5%88%99%EF%BC%9A%E4%B8%80%E4%B8%AA-unlock-%E6%93%8D%E4%BD%9C-happen%E2%80%94before-%E5%90%8E%E9%9D%A2%EF%BC%88%E6%97%B6%E9%97%B4%E4%B8%8A%E7%9A%84%E5%85%88%E5%90%8E%E9%A1%BA%E5%BA%8F%EF%BC%8C%E4%B8%8B%E5%90%8C%EF%BC%89%E5%AF%B9%E5%90%8C%E4%B8%80%E4%B8%AA%E9%94%81%E7%9A%84-lock-%E6%93%8D%E4%BD%9C%E3%80%82"><span class="nav-number">1.7.1.0.0.2.</span> <span class="nav-text">⦁    管理锁定规则：一个 unlock 操作 happen—before 后面（时间上的先后顺序，下同）对同一个锁的 lock 操作。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-volatile%E5%8F%98%E9%87%8F%E8%A7%84%E5%88%99%EF%BC%9A%E5%AF%B9%E4%B8%80%E4%B8%AA-volatile-%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C-happen%E2%80%94before-%E5%90%8E%E9%9D%A2%E5%AF%B9%E8%AF%A5%E5%8F%98%E9%87%8F%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C%E3%80%82"><span class="nav-number">1.7.1.0.0.3.</span> <span class="nav-text">⦁    volatile变量规则：对一个 volatile 变量的写操作 happen—before 后面对该变量的读操作。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-%E7%BA%BF%E7%A8%8B%E5%90%AF%E5%8A%A8%E8%A7%84%E5%88%99%EF%BC%9AThread-%E5%AF%B9%E8%B1%A1%E7%9A%84-start-%E6%96%B9%E6%B3%95-happen%E2%80%94before-%E6%AD%A4%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%8A%A8%E4%BD%9C%E3%80%82"><span class="nav-number">1.7.1.0.0.4.</span> <span class="nav-text">⦁    线程启动规则：Thread 对象的 start()方法 happen—before 此线程的每一个动作。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-%E7%BA%BF%E7%A8%8B%E7%BB%88%E6%AD%A2%E8%A7%84%E5%88%99%EF%BC%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%93%8D%E4%BD%9C%E9%83%BD-happen%E2%80%94before-%E5%AF%B9%E6%AD%A4%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%BB%88%E6%AD%A2%E6%A3%80%E6%B5%8B%EF%BC%8C%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87-Thread-join-%E6%96%B9%E6%B3%95%E7%BB%93%E6%9D%9F-Thread-isAlive-%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E7%AD%89%E6%89%8B%E6%AE%B5%E6%A3%80%E6%B5%8B%E5%88%B0%E7%BA%BF%E7%A8%8B%E5%B7%B2%E7%BB%8F%E7%BB%88%E6%AD%A2%E6%89%A7%E8%A1%8C%E3%80%82"><span class="nav-number">1.7.1.0.0.5.</span> <span class="nav-text">⦁    线程终止规则：线程的所有操作都 happen—before 对此线程的终止检测，可以通过 Thread.join()方法结束 Thread.isAlive()的返回值等手段检测到线程已经终止执行。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-%E7%BA%BF%E7%A8%8B%E4%B8%AD%E6%96%AD%E8%A7%84%E5%88%99%EF%BC%9A%E5%AF%B9%E7%BA%BF%E7%A8%8B-interrupt-%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8-happen%E2%80%94before-%E5%8F%91%E7%94%9F%E4%BA%8E%E8%A2%AB%E4%B8%AD%E6%96%AD%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E6%A3%80%E6%B5%8B%E5%88%B0%E4%B8%AD%E6%96%AD%E6%97%B6%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%8F%91%E7%94%9F%E3%80%82"><span class="nav-number">1.7.1.0.0.6.</span> <span class="nav-text">⦁    线程中断规则：对线程 interrupt()方法的调用 happen—before 发生于被中断线程的代码检测到中断时事件的发生。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-%E5%AF%B9%E8%B1%A1%E7%BB%88%E7%BB%93%E8%A7%84%E5%88%99%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AE%8C%E6%88%90%EF%BC%88%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9D%9F%EF%BC%89happen%E2%80%94before-%E5%AE%83%E7%9A%84-finalize-%E6%96%B9%E6%B3%95%E7%9A%84%E5%BC%80%E5%A7%8B%E3%80%82"><span class="nav-number">1.7.1.0.0.7.</span> <span class="nav-text">⦁    对象终结规则：一个对象的初始化完成（构造函数执行结束）happen—before 它的 finalize()方法的开始。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%A6%81-%E4%BC%A0%E9%80%92%E6%80%A7%EF%BC%9A%E5%A6%82%E6%9E%9C%E6%93%8D%E4%BD%9C-A-happen%E2%80%94before-%E6%93%8D%E4%BD%9C-B%EF%BC%8C%E6%93%8D%E4%BD%9C-B-happen%E2%80%94before-%E6%93%8D%E4%BD%9C-C%EF%BC%8C%E9%82%A3%E4%B9%88%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%87%BA-A-happen%E2%80%94before-%E6%93%8D%E4%BD%9C-C%E3%80%82"><span class="nav-number">1.7.1.0.0.8.</span> <span class="nav-text">⦁    传递性：如果操作 A happen—before 操作 B，操作 B happen—before 操作 C，那么可以得出 A happen—before 操作 C。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E4%B8%8A%E5%85%88%E5%90%8E%E9%A1%BA%E5%BA%8F%E5%92%8C-happen%E2%80%94before-%E5%8E%9F%E5%88%99"><span class="nav-number">1.7.2.</span> <span class="nav-text">时间上先后顺序和 happen—before 原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-happen%E2%80%94before-%E8%A7%84%E5%88%99%E5%88%86%E6%9E%90-DCL"><span class="nav-number">1.7.3.</span> <span class="nav-text">利用 happen—before 规则分析 DCL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.7.4.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5-Java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%882%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">深入 Java 内存模型（2）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%86%85%E5%AD%98%E4%B8%8E%E5%B7%A5%E4%BD%9C%E5%86%85%E5%AD%98"><span class="nav-number">1.8.1.</span> <span class="nav-text">主内存与工作内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%97%B4%E4%BA%A4%E4%BA%92%E6%93%8D%E4%BD%9C"><span class="nav-number">1.8.2.</span> <span class="nav-text">内存间交互操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Volatile-%E5%9E%8B%E5%8F%98%E9%87%8F%E7%9A%84%E7%89%B9%E6%AE%8A%E8%A7%84%E5%88%99"><span class="nav-number">1.8.3.</span> <span class="nav-text">Volatile 型变量的特殊规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Final%E5%9F%9F"><span class="nav-number">1.8.4.</span> <span class="nav-text">Final域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#long-%E5%92%8C-double-%E5%9E%8B%E5%8F%98%E9%87%8F%E7%9A%84%E7%89%B9%E6%AE%8A%E8%A7%84%E5%88%99"><span class="nav-number">1.8.5.</span> <span class="nav-text">long 和 double 型变量的特殊规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor-%E6%A1%86%E6%9E%B6%E4%B8%8E%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.9.</span> <span class="nav-text">Executor 框架与线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor-%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B"><span class="nav-number">1.9.1.</span> <span class="nav-text">Executor 框架简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor-%E6%89%A7%E8%A1%8C-Runnable-%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.9.2.</span> <span class="nav-text">Executor 执行 Runnable 任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor-%E6%89%A7%E8%A1%8C-Callable-%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.9.3.</span> <span class="nav-text">Executor 执行 Callable 任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.9.4.</span> <span class="nav-text">自定义线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E7%A7%8D%E6%8E%92%E9%98%9F%E7%9A%84%E7%AD%96%E7%95%A5"><span class="nav-number">1.9.5.</span> <span class="nav-text">几种排队的策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lock-%E9%94%81%E4%B8%8E%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="nav-number">1.10.</span> <span class="nav-text">Lock 锁与条件变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8-Lock-%E9%94%81"><span class="nav-number">1.10.1.</span> <span class="nav-text">简单使用 Lock 锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReetrankLock-%E4%B8%8E-synchronized-%E6%AF%94%E8%BE%83"><span class="nav-number">1.10.2.</span> <span class="nav-text">ReetrankLock 与 synchronized 比较</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">1.10.2.1.</span> <span class="nav-text">性能比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E9%80%94%E6%AF%94%E8%BE%83"><span class="nav-number">1.10.2.2.</span> <span class="nav-text">用途比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E4%B8%AD%E6%96%AD%E9%94%81"><span class="nav-number">1.10.3.</span> <span class="nav-text">可中断锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8D%8F%E4%BD%9C"><span class="nav-number">1.10.4.</span> <span class="nav-text">条件变量实现线程间协作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E9%94%81"><span class="nav-number">1.10.5.</span> <span class="nav-text">读写锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E4%B8%8E%E9%98%BB%E5%A1%9E%E6%A0%88"><span class="nav-number">1.11.</span> <span class="nav-text">阻塞队列与阻塞栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97"><span class="nav-number">1.11.1.</span> <span class="nav-text">阻塞队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E6%A0%88"><span class="nav-number">1.11.2.</span> <span class="nav-text">阻塞栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%9C%E7%A2%8D%E5%99%A8-CyclicBarrier"><span class="nav-number">1.12.</span> <span class="nav-text">障碍器 CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F-Semaphore"><span class="nav-number">1.13.</span> <span class="nav-text">信号量 Semaphore</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -268,12 +244,311 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/20/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZP">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/20/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">并发编程模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-07-20 15:27:19 / 修改时间：15:27:43" itemprop="dateCreated datePublished" datetime="2020-07-20T15:27:19+08:00">2020-07-20</time>
+    </span>
 
   
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="并发编程模型"><a href="#并发编程模型" class="headerlink" title="并发编程模型"></a>并发编程模型</h1><p>并发系统可以采用多种并发编程模型来实现。并发模型指定了系统中的线程如何通过协作来完成分配给它们的作业。不同的并发模型采用不同的方式拆分作业，同时线程间的协作和交互方式也不相同。这篇并发模型教程将会较深入地介绍目前（2015 年，本文撰写时间）比较流行的几种并发模型。</p>
+<h2 id="并发模型与分布式系统之间的相似性"><a href="#并发模型与分布式系统之间的相似性" class="headerlink" title="并发模型与分布式系统之间的相似性"></a>并发模型与分布式系统之间的相似性</h2><p>本文所描述的并发模型类似于分布式系统中使用的很多体系结构。在并发系统中线程之间可以相互通信。在分布式系统中进程之间也可以相互通信（进程有可能在不同的机器中）。线程和进程之间具有很多相似的特性。这也就是为什么很多并发模型通常类似于各种分布式系统架构。</p>
+<p>当然，分布式系统在处理网络失效、远程主机或进程宕掉等方面也面临着额外的挑战。但是运行在巨型服务器上的并发系统也可能遇到类似的问题，比如一块 CPU 失效、一块网卡失效或一个磁盘损坏等情况。虽然出现失效的概率可能很低，但是在理论上仍然有可能发生。</p>
+<p>由于并发模型类似于分布式系统架构，因此它们通常可以互相借鉴思想。例如，为工作者们（线程）分配作业的模型一般与分布式系统中的<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/software-architecture/load-balancing.html">负载均衡系统</a>比较相似。同样，它们在日志记录、失效转移、幂等性等错误处理技术上也具有相似性。</p>
+<p>【注：幂等性，一个幂等操作的特点是其任意多次执行所产生的影响均与一次执行的影响相同】</p>
+<h2 id="并行工作者"><a href="#并行工作者" class="headerlink" title="并行工作者"></a>并行工作者</h2><p>第一种并发模型就是我所说的并行工作者模型。传入的作业会被分配到不同的工作者上。下图展示了并行工作者模型：</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/1.png" alt="img"></p>
+<p>在并行工作者模型中，委派者（Delegator）将传入的作业分配给不同的工作者。每个工作者完成整个任务。工作者们并行运作在不同的线程上，甚至可能在不同的 CPU 上。</p>
+<p>如果在某个汽车厂里实现了并行工作者模型，每台车都会由一个工人来生产。工人们将拿到汽车的生产规格，并且从头到尾负责所有工作。</p>
+<p>在 Java 应用系统中，并行工作者模型是最常见的并发模型（即使正在转变）。<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-util-concurrent/index.html">java.util.concurrent</a>包中的许多并发实用工具都是设计用于这个模型的。你也可以在 Java 企业级（J2EE）应用服务器的设计中看到这个模型的踪迹。</p>
+<h3 id="并行工作者模型的优点"><a href="#并行工作者模型的优点" class="headerlink" title="并行工作者模型的优点"></a>并行工作者模型的优点</h3><p>并行工作者模式的优点是，它很容易理解。你只需添加更多的工作者来提高系统的并行度。</p>
+<p>例如，如果你正在做一个网络爬虫，可以试试使用不同数量的工作者抓取到一定数量的页面，然后看看多少数量的工作者消耗的时间最短（意味着性能最高）。由于网络爬虫是一个 IO 密集型工作，最终结果很有可能是你电脑中的每个 CPU 或核心分配了几个线程。每个 CPU 若只分配一个线程可能有点少，因为在等待数据下载的过程中 CPU 将会空闲大量时间。</p>
+<h2 id="并行工作者模型的缺点"><a href="#并行工作者模型的缺点" class="headerlink" title="并行工作者模型的缺点"></a>并行工作者模型的缺点</h2><p>并行工作者模型虽然看起来简单，却隐藏着一些缺点。接下来的章节中我会分析一些最明显的弱点。</p>
+<h3 id="共享状态可能会很复杂"><a href="#共享状态可能会很复杂" class="headerlink" title="共享状态可能会很复杂"></a>共享状态可能会很复杂</h3><p>在实际应用中，并行工作者模型可能比前面所描述的情况要复杂得多。共享的工作者经常需要访问一些共享数据，无论是内存中的或者共享的数据库中的。下图展示了并行工作者模型是如何变得复杂的：</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/2.png" alt="img"></p>
+<p>有些共享状态是在像作业队列这样的通信机制下。但也有一些共享状态是业务数据，数据缓存，数据库连接池等。</p>
+<p>一旦共享状态潜入到并行工作者模型中，将会使情况变得复杂起来。线程需要以某种方式存取共享数据，以确保某个线程的修改能够对其他线程可见（数据修改需要同步到主存中，不仅仅将数据保存在执行这个线程的CPU的缓存中）。线程需要避免<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/race-conditions-and-critical-sections.html">竟态</a>，<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/deadlock.html">死锁</a>以及很多其他共享状态的并发性问题。</p>
+<p>此外，在等待访问共享数据结构时，线程之间的互相等待将会丢失部分并行性。许多并发数据结构是阻塞的，意味着在任何一个时间只有一个或者很少的线程能够访问。这样会导致在这些共享数据结构上出现竞争状态。在执行需要访问共享数据结构部分的代码时，高竞争基本上会导致执行时出现一定程度的串行化。</p>
+<p>现在的<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/non-blocking-algorithms.html">非阻塞并发算法</a>也许可以降低竞争并提升性能，但是非阻塞算法的实现比较困难。</p>
+<p>可持久化的数据结构是另一种选择。在修改的时候，可持久化的数据结构总是保护它的前一个版本不受影响。因此，如果多个线程指向同一个可持久化的数据结构，并且其中一个线程进行了修改，进行修改的线程会获得一个指向新结构的引用。所有其他线程保持对旧结构的引用，旧结构没有被修改并且因此保证一致性。Scala 编程包含几个持久化数据结构。</p>
+<p>【注：这里的可持久化数据结构不是指持久化存储，而是一种数据结构，比如 Java 中的 String 类，以及 CopyOnWriteArrayList 类，具体可<a target="_blank" rel="noopener" href="http://www.cnblogs.com/tedzhao/archive/2008/11/12/1332112.html">参考</a>】</p>
+<p>虽然可持久化的数据结构在解决共享数据结构的并发修改时显得很优雅，但是可持久化的数据结构的表现往往不尽人意。</p>
+<p>比如说，一个可持久化的链表需要在头部插入一个新的节点，并且返回指向这个新加入的节点的一个引用（这个节点指向了链表的剩余部分）。所有其他现场仍然保留了这个链表之前的第一个节点，对于这些线程来说链表仍然是为改变的。它们无法看到新加入的元素。</p>
+<p>这种可持久化的列表采用链表来实现。不幸的是链表在现代硬件上表现的不太好。链表中得每个元素都是一个独立的对象，这些对象可以遍布在整个计算机内存中。现代 CPU 能够更快的进行顺序访问，所以你可以在现代的硬件上用数组实现的列表，以获得更高的性能。数组可以顺序的保存数据。CPU 缓存能够一次加载数组的一大块进行缓存，一旦加载完成 CPU 就可以直接访问缓存中的数据。这对于元素散落在 RAM 中的链表来说，不太可能做得到。</p>
+<h3 id="无状态的工作者"><a href="#无状态的工作者" class="headerlink" title="无状态的工作者"></a>无状态的工作者</h3><p>共享状态能够被系统中得其他线程修改。所以工作者在每次需要的时候必须重读状态，以确保每次都能访问到最新的副本，不管共享状态是保存在内存中的还是在外部数据库中。工作者无法在内部保存这个状态（但是每次需要的时候可以重读）称为无状态的。</p>
+<p>每次都重读需要的数据，将会导致速度变慢，特别是状态保存在外部数据库中的时候。</p>
+<h3 id="任务顺序是不确定的"><a href="#任务顺序是不确定的" class="headerlink" title="任务顺序是不确定的"></a>任务顺序是不确定的</h3><p>并行工作者模式的另一个缺点是，作业执行顺序是不确定的。无法保证哪个作业最先或者最后被执行。作业 A 可能在作业 B 之前就被分配工作者了，但是作业 B 反而有可能在作业A之前执行。</p>
+<p>并行工作者模式的这种非确定性的特性，使得很难在任何特定的时间点推断系统的状态。这也使得它也更难（如果不是不可能的话）保证一个作业在其他作业之前被执行。</p>
+<h2 id="流水线模式"><a href="#流水线模式" class="headerlink" title="流水线模式"></a>流水线模式</h2><p>第二种并发模型我们称之为流水线并发模型。我之所以选用这个名字，只是为了配合“并行工作者”的隐喻。其他开发者可能会根据平台或社区选择其他称呼（比如说反应器系统，或事件驱动系统）。下图表示一个流水线并发模型：</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/3.png" alt="img"></p>
+<p>类似于工厂中生产线上的工人们那样组织工作者。每个工作者只负责作业中的部分工作。当完成了自己的这部分工作时工作者会将作业转发给下一个工作者。每个工作者在自己的线程中运行，并且不会和其他工作者共享状态。有时也被成为无共享并行模型。</p>
+<p>通常使用非阻塞的 IO 来设计使用流水线并发模型的系统。非阻塞 IO 意味着，一旦某个工作者开始一个 IO 操作的时候（比如读取文件或从网络连接中读取数据），这个工作者不会一直等待 IO 操作的结束。IO 操作速度很慢，所以等待 IO 操作结束很浪费 CPU 时间。此时 CPU 可以做一些其他事情。当 IO 操作完成的时候，IO 操作的结果（比如读出的数据或者数据写完的状态）被传递给下一个工作者。</p>
+<p>有了非阻塞 IO，就可以使用 IO 操作确定工作者之间的边界。工作者会尽可能多运行直到遇到并启动一个 IO 操作。然后交出作业的控制权。当 IO 操作完成的时候，在流水线上的下一个工作者继续进行操作，直到它也遇到并启动一个 IO 操作。</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/4.png" alt="img"></p>
+<p>在实际应用中，作业有可能不会沿着单一流水线进行。由于大多数系统可以执行多个作业，作业从一个工作者流向另一个工作者取决于作业需要做的工作。在实际中可能会有多个不同的虚拟流水线同时运行。这是现实当中作业在流水线系统中可能的移动情况：</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/5.png" alt="img"></p>
+<p>作业甚至也有可能被转发到超过一个工作者上并发处理。比如说，作业有可能被同时转发到作业执行器和作业日志器。下图说明了三条流水线是如何通过将作业转发给同一个工作者（中间流水线的最后一个工作者）来完成作业:</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/6.png" alt="img"></p>
+<p>流水线有时候比这个情况更加复杂。</p>
+<h3 id="反应器，事件驱动系统"><a href="#反应器，事件驱动系统" class="headerlink" title="反应器，事件驱动系统"></a>反应器，事件驱动系统</h3><p>采用流水线并发模型的系统有时候也称为反应器系统或事件驱动系统。系统内的工作者对系统内出现的事件做出反应，这些事件也有可能来自于外部世界或者发自其他工作者。事件可以是传入的 HTTP 请求，也可以是某个文件成功加载到内存中等。在写这篇文章的时候，已经有很多有趣的反应器/事件驱动平台可以使用了，并且不久的将来会有更多。比较流行的似乎是这几个：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/vert.x/index.html">Vert.x</a></li>
+<li>AKKa</li>
+<li>Node.JS(JavaScript)</li>
+</ul>
+<p>我个人觉得 Vert.x 是相当有趣的（特别是对于我这样使用 Java/JVM 的人来说）</p>
+<h3 id="Actors-和-Channels"><a href="#Actors-和-Channels" class="headerlink" title="Actors 和 Channels"></a>Actors 和 Channels</h3><p>Actors 和 channels 是两种比较类似的流水线（或反应器/事件驱动）模型。</p>
+<p>在 Actor 模型中每个工作者被称为 actor。Actor 之间可以直接异步地发送和处理消息。Actor 可以被用来实现一个或多个像前文描述的那样的作业处理流水线。下图给出了 Actor 模型：</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/7.png" alt="img"></p>
+<p>而在 Channel 模型中，工作者之间不直接进行通信。相反，它们在不同的通道中发布自己的消息（事件）。其他工作者们可以在这些通道上监听消息，发送者无需知道谁在监听。下图给出了 Channel 模型：</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/8.png" alt="img"></p>
+<p>在写这篇文章的时候，channel 模型对于我来说似乎更加灵活。一个工作者无需知道谁在后面的流水线上处理作业。只需知道作业（或消息等）需要转发给哪个通道。通道上的监听者可以随意订阅或者取消订阅，并不会影响向这个通道发送消息的工作者。这使得工作者之间具有松散的耦合。</p>
+<h2 id="流水线模型的优点"><a href="#流水线模型的优点" class="headerlink" title="流水线模型的优点"></a>流水线模型的优点</h2><p>相比并行工作者模型，流水线并发模型具有几个优点，在接下来的章节中我会介绍几个最大的优点。</p>
+<h3 id="无需共享的状态"><a href="#无需共享的状态" class="headerlink" title="无需共享的状态"></a>无需共享的状态</h3><p>工作者之间无需共享状态，意味着实现的时候无需考虑所有因并发访问共享对象而产生的并发性问题。这使得在实现工作者的时候变得非常容易。在实现工作者的时候就好像是单个线程在处理工作-基本上是一个单线程的实现。</p>
+<h3 id="有状态的工作者"><a href="#有状态的工作者" class="headerlink" title="有状态的工作者"></a>有状态的工作者</h3><p>当工作者知道了没有其他线程可以修改它们的数据，工作者可以变成有状态的。对于有状态，我是指，它们可以在内存中保存它们需要操作的数据，只需在最后将更改写回到外部存储系统。因此，有状态的工作者通常比无状态的工作者具有更高的性能。</p>
+<h3 id="较好的硬件整合（Hardware-Conformity）"><a href="#较好的硬件整合（Hardware-Conformity）" class="headerlink" title="较好的硬件整合（Hardware Conformity）"></a>较好的硬件整合（Hardware Conformity）</h3><p>单线程代码在整合底层硬件的时候往往具有更好的优势。首先，当能确定代码只在单线程模式下执行的时候，通常能够创建更优化的数据结构和算法。</p>
+<p>其次，像前文描述的那样，单线程有状态的工作者能够在内存中缓存数据。在内存中缓存数据的同时，也意味着数据很有可能也缓存在执行这个线程的 CPU 的缓存中。这使得访问缓存的数据变得更快。</p>
+<p>我说的硬件整合是指，以某种方式编写的代码，使得能够自然地受益于底层硬件的工作原理。有些开发者称之为 mechanical sympathy。我更倾向于硬件整合这个术语，因为计算机只有很少的机械部件，并且能够隐喻“更好的匹配（match better）”，相比“同情（sympathy）”这个词在上下文中的意思，我觉得“conform”这个词表达的非常好。当然了，这里有点吹毛求疵了，用自己喜欢的术语就行。</p>
+<h3 id="合理的作业顺序"><a href="#合理的作业顺序" class="headerlink" title="合理的作业顺序"></a>合理的作业顺序</h3><p>基于流水线并发模型实现的并发系统，在某种程度上是有可能保证作业的顺序的。作业的有序性使得它更容易地推出系统在某个特定时间点的状态。更进一步，你可以将所有到达的作业写入到日志中去。一旦这个系统的某一部分挂掉了，该日志就可以用来重头开始重建系统当时的状态。按照特定的顺序将作业写入日志，并按这个顺序作为有保障的作业顺序。下图展示了一种可能的设计：</p>
+<p><img src="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/8.png" alt="img"></p>
+<p>实现一个有保障的作业顺序是不容易的，但往往是可行的。如果可以，它将大大简化一些任务，例如备份、数据恢复、数据复制等，这些都可以通过日志文件来完成。</p>
+<h2 id="流水线模型的缺点"><a href="#流水线模型的缺点" class="headerlink" title="流水线模型的缺点"></a>流水线模型的缺点</h2><p>流水线并发模型最大的缺点是作业的执行往往分布到多个工作者上，并因此分布到项目中的多个类上。这样导致在追踪某个作业到底被什么代码执行时变得困难。</p>
+<p>同样，这也加大了代码编写的难度。有时会将工作者的代码写成回调处理的形式。若在代码中嵌入过多的回调处理，往往会出现所谓的回调地狱（callback hell）现象。所谓回调地狱，就是意味着在追踪代码在回调过程中到底做了什么，以及确保每个回调只访问它需要的数据的时候，变得非常困难</p>
+<p>使用并行工作者模型可以简化这个问题。你可以打开工作者的代码，从头到尾优美的阅读被执行的代码。当然并行工作者模式的代码也可能同样分布在不同的类中，但往往也能够很容易的从代码中分析执行的顺序。</p>
+<h2 id="函数式并行（Functional-Parallelism）"><a href="#函数式并行（Functional-Parallelism）" class="headerlink" title="函数式并行（Functional Parallelism）"></a>函数式并行（Functional Parallelism）</h2><p>第三种并发模型是函数式并行模型，这是也最近（2015）讨论的比较多的一种模型。函数式并行的基本思想是采用函数调用实现程序。函数可以看作是”代理人（agents）“或者”actor“，函数之间可以像流水线模型（AKA 反应器或者事件驱动系统）那样互相发送消息。某个函数调用另一个函数，这个过程类似于消息发送。</p>
+<p>函数都是通过拷贝来传递参数的，所以除了接收函数外没有实体可以操作数据。这对于避免共享数据的竞态来说是很有必要的。同样也使得函数的执行类似于原子操作。每个函数调用的执行独立于任何其他函数的调用。</p>
+<p>一旦每个函数调用都可以独立的执行，它们就可以分散在不同的 CPU 上执行了。这也就意味着能够在多处理器上并行的执行使用函数式实现的算法。</p>
+<p>Java7 中的 java.util.concurrent 包里包含的 <a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-util-concurrent/java-fork-and-join-forkjoinpool.html">ForkAndJoinPool</a> 能够帮助我们实现类似于函数式并行的一些东西。而 Java8 中并行 <a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-util-concurrent/java-fork-and-join-forkjoinpool.html">streams</a> 能够用来帮助我们并行的迭代大型集合。记住有些开发者对 ForkAndJoinPool 进行了批判（你可以在我的 ForkAndJoinPool 教程里面看到批评的链接）。</p>
+<p>函数式并行里面最难的是确定需要并行的那个函数调用。跨 CPU 协调函数调用需要一定的开销。某个函数完成的工作单元需要达到某个大小以弥补这个开销。如果函数调用作用非常小，将它并行化可能比单线程、单 CPU 执行还慢。</p>
+<p>我个人认为（可能不太正确），你可以使用反应器或者事件驱动模型实现一个算法，像函数式并行那样的方法实现工作的分解。使用事件驱动模型可以更精确的控制如何实现并行化（我的观点）。</p>
+<p>此外，将任务拆分给多个 CPU 时协调造成的开销，仅仅在该任务是程序当前执行的唯一任务时才有意义。但是，如果当前系统正在执行多个其他的任务时（比如 web 服务器，数据库服务器或者很多其他类似的系统），将单个任务进行并行化是没有意义的。不管怎样计算机中的其他 CPU 们都在忙于处理其他任务，没有理由用一个慢的、函数式并行的任务去扰乱它们。使用流水线（反应器）并发模型可能会更好一点，因为它开销更小（在单线程模式下顺序执行）同时能更好的与底层硬件整合。</p>
+<h2 id="使用那种并发模型最好？"><a href="#使用那种并发模型最好？" class="headerlink" title="使用那种并发模型最好？"></a>使用那种并发模型最好？</h2><p>所以，用哪种并发模型更好呢?</p>
+<p>通常情况下，这个答案取决于你的系统打算做什么。如果你的作业本身就是并行的、独立的并且没有必要共享状态，你可能会使用并行工作者模型去实现你的系统。虽然许多作业都不是自然并行和独立的。对于这种类型的系统，我相信使用流水线并发模型能够更好的发挥它的优势，而且比并行工作者模型更有优势。</p>
+<p>你甚至不用亲自编写所有流水线模型的基础结构。像 Vert.x 这种现代化的平台已经为你实现了很多。我也会去为探索如何设计我的下一个项目，使它运行在像 Vert.x 这样的优秀平台上。我感觉 Java EE 已经没有任何优势了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/20/java-concurrency/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZP">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/20/java-concurrency/" class="post-title-link" itemprop="url">多线程Guide</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-20 15:22:02" itemprop="dateCreated datePublished" datetime="2020-07-20T15:22:02+08:00">2020-07-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-07-21 16:58:40" itemprop="dateModified" datetime="2020-07-21T16:58:40+08:00">2020-07-21</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Concurrency-Guide/" itemprop="url" rel="index"><span itemprop="name">Concurrency-Guide</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="什么是多线程？"><a href="#什么是多线程？" class="headerlink" title="什么是多线程？"></a>什么是多线程？</h2><p>多线程意味着您在同一应用程序中具有多个<em>执行线程</em>。线程就像执行应用程序的独立CPU。因此，多线程应用程序就像具有多个CPU同时执行代码的不同部分的应用程序。</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/introduction-1.png" alt="在其中执行两个线程的应用程序。"></p>
+<p>线程不等于CPU。通常，单个CPU将在多个线程之间共享其执行时间，并在给定的时间量内在每个线程之间执行切换。也可以使应用程序的线程由不同的CPU执行。</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/introduction-2.png" alt="具有线程由不同线程执行的多个应用程序。"></p>
+<h2 id="为什么要多线程？"><a href="#为什么要多线程？" class="headerlink" title="为什么要多线程？"></a>为什么要多线程？</h2><p>为什么要在应用程序中使用多线程有多个原因。多线程的一些最常见原因是：</p>
+<ul>
+<li>更好地利用单个CPU。</li>
+<li>更好地利用多个CPU或CPU内核。</li>
+<li>更好的用户响应性体验。</li>
+<li>更好的用户公平性体验。</li>
+</ul>
+<p>我将在以下各节中详细解释每个原因。</p>
+<h3 id="更好地利用单个CPU"><a href="#更好地利用单个CPU" class="headerlink" title="更好地利用单个CPU"></a>更好地利用单个CPU</h3><p>最常见的原因之一是能够更好地利用计算机中的资源。例如，如果一个线程正在等待对通过网络发送的请求的响应，则另一线程可以同时使用CPU来执行其他操作。此外，如果计算机具有多个CPU，或者CPU具有多个执行核心，则多线程还可以帮助您的应用程序利用这些额外的CPU核心。</p>
+<h3 id="更好地利用多个CPU或CPU内核"><a href="#更好地利用多个CPU或CPU内核" class="headerlink" title="更好地利用多个CPU或CPU内核"></a>更好地利用多个CPU或CPU内核</h3><p>如果计算机包含多个CPU或CPU包含多个执行核心，则您需要为应用程序使用多个线程才能使用所有CPU或CPU核心。单个线程最多只能使用一个CPU，如上所述，有时甚至不能完全利用单个CPU。</p>
+<h3 id="更好的用户响应性体验"><a href="#更好的用户响应性体验" class="headerlink" title="更好的用户响应性体验"></a>更好的用户响应性体验</h3><p>使用多线程的另一个原因是为了提供更好的用户体验。例如，如果您单击GUI中的按钮，并导致通过网络发送请求，那么哪个线程执行此请求就很重要。如果您使用同一个线程去更新GUI，则在GUI线程等待请求响应时，用户可能会遇到GUI“挂起”的情况。取而代之，建议的做法为把这样的请求（发起网络请求）通过后台线程执行，因此GUI的那个线程可以自由地同时响应用户的请求。</p>
+<h3 id="更好的用户公平性体验"><a href="#更好的用户公平性体验" class="headerlink" title="更好的用户公平性体验"></a>更好的用户公平性体验</h3><p>第四个原因是在用户之间更公平地共享计算机资源。例如，假设一台服务器接收来自客户端的请求，并且只有一个线程来执行这些请求。如果客户端发送的请求需要很长时间才能处理，则所有其他客户端的请求都必须等待，直到一个请求完成。通过使每个客户端的请求都由其自己的线程执行，则没有一个任务可以完全垄断CPU。</p>
+<h2 id="多线程与多任务"><a href="#多线程与多任务" class="headerlink" title="多线程与多任务"></a>多线程与多任务</h2><p>过去，一台计算机只有一个CPU，并且一次只能执行一个程序。大多数小型计算机的功能实际上不足以同时执行多个程序，因此这些小型机也没有尝试过。公平地讲，许多大型机系统拥有能够一次执行多个程序的能力比个人计算机早很多年。</p>
+<h3 id="多任务"><a href="#多任务" class="headerlink" title="多任务"></a>多任务</h3><p>后来出现了多任务处理，这意味着计算机可以同时执行多个程序（AKA任务或进程）。但是，这并不是真正的“同时”。单个CPU在程序之间共享。操作系统将在运行的程序之间进行切换，并在切换之前执行每个程序一会儿。</p>
+<p>随着多任务处理，软件开发人员面临着新的挑战。程序不再假定拥有所有可用的CPU时间，也不拥有所有的内存或任何其他计算机资源。一个“好公民”程序应释放不再使用的所有资源，以便其他程序可以使用它们。</p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>后来又出现了多线程，这意味着您可以在同一程序中拥有多个执行线程。可以将一个执行线程视为一个CPU执行的程序。当有多个线程执行同一程序时，就像在同一程序里有多个CPU执行它。</p>
+<h2 id="多线程很难"><a href="#多线程很难" class="headerlink" title="多线程很难"></a>多线程很难</h2><p>多线程是提高某些类型程序性能的好方法。但是，多线程处理比多任务处理更具挑战性。这些线程在同一程序中执行，因此同时在读取和写入相同的内存。这可能会导致在单线程程序中看不到的错误。在单个CPU机器上可能看不到其中一些错误，因为两个线程从未真正“同时”执行。但是，现代计算机配备了多核CPU，甚至还配备了多个CPU。这意味着可以由单独的内核或CPU同时执行单独的线程。</p>
+<p><img src="http://tutorials.jenkov.com/images/java-concurrency/java-concurrency-tutorial-introduction-1.png" alt="多CPU计算机上的多线程"></p>
+<p>如果一个线程读取了另一个线程正在写入的内存位置，那么读线程最终将读取什么值？旧值？写线程写的值？还是两者之间混合的值？或者，如果两个线程同时写入相同的内存位置，完成后将剩下什么值？由第一个线程写的值？第二个线程写的值？还是两个值的混合编写？</p>
+<p>没有适当的预防措施，任何这些结果都是可能的。该行为甚至是不可预测的。结果可能会不时改变。因此，作为开发人员，重要的是要知道如何采取正确的预防措施-意味着学习控制线程如何访问共享资源（如内存，文件，数据库等）。这是本Java并发性教程解决的主题之一。</p>
+<h2 id="Java中的多线程和并发"><a href="#Java中的多线程和并发" class="headerlink" title="Java中的多线程和并发"></a>Java中的多线程和并发</h2><p>Java是最早使开发人员可以使用多线程的语言之一。Java从一开始就具有多线程功能。因此，Java开发人员经常面临上述问题。这就是我在Java并发上编写此捷径的原因。谨此提醒自己，以及可能从中受益的其他Java开发人员。</p>
+<p>本教程主要关注Java中的多线程，但有些在多线程中出现的问题会和多任务以及分布式系统中出现的存在类似，因此该系列会将多任务和分布式系统方面作为参考，所以叫法上称为“并发性”，而不是“多线程”。</p>
+<h2 id="并发模型"><a href="#并发模型" class="headerlink" title="并发模型"></a>并发模型</h2><p>第一个Java <em>并发模型</em>假定在同一应用程序中执行的多个线程也将共享对象。这种类型的并发模型通常称为“共享状态并发模型”。许多并发语言构造和实用程序旨在支持这种并发模型。</p>
+<p>但是，自从编写第一本Java并发书籍以来，甚至自Java 5并发实用工具发布以来，并发体系结构和设计领域已经发生了很多事情。</p>
+<p>共享状态并发模型导致许多并发问题，这些问题很难优雅地解决。因此，被称为“无共享”或“分离状态”的替代并发模型已经普及。在单独或者分离状态得并发模型中，线程不共享任何对象或数据。这避免了共享状态下并发模型的许多并发访问问题。</p>
+<p>出现了新的异步“分离状态”的平台和工具包，例如Netty，Vert.x和Play / Akka和Qbit(就听过netty囧)。新的非阻塞并发算法已经发布，并且新的非阻塞工具（例如LMax Disrupter）已添加到我们的工具箱中。Java 7中的Fork and Join框架和Java 8中的collection stream API引入了新的函数式编程并行性。</p>
+<p>通过所有这些新开发，现在是时候更新本Java Concurrency教程了。因此，本教程再次<strong>进行中</strong>。只要有时间编写新教程，它们就会发布。</p>
+<h2 id="Java并发学习指南"><a href="#Java并发学习指南" class="headerlink" title="Java并发学习指南"></a>Java并发学习指南</h2><p>如果您不熟悉Java并发，建议您遵循以下学习计划。您也可以在此页面左侧的菜单中找到所有主题的链接。</p>
+<p>通用并发和多线程理论：</p>
+<ul>
+<li><a href="/2020/07/20/benifits/" title="多线程的好处">多线程的好处</a></li>
+<li><a href="/2020/07/20/costs/" title="多线程成本">多线程成本</a></li>
+<li><a href="/2020/07/20/concurrency-models/" title="并发模型">并发模型</a></li>
+<li><a href="/2020/07/20/same-threading/" title="同一线程">同一线程</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/concurrency-vs-parallelism.html">并发与并行</a></li>
+</ul>
+<p>Java并发基础知识：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/creating-and-starting-threads.html">创建和启动Java线程</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/race-conditions-and-critical-sections.html">比赛条件和关键部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/thread-safety.html">线程安全和共享资源</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/thread-safety-and-immutability.html">线程安全性和不变性</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/java-memory-model.html">Java内存模型</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/synchronized.html">Java同步块</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/volatile.html">Java易失性关键字</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/threadlocal.html">Java ThreadLocal</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/thread-signaling.html">Java线程信令</a></li>
+</ul>
+<p>Java并发性的典型问题：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/deadlock.html">僵局</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/deadlock-prevention.html">防止死锁</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/starvation-and-fairness.html">饥饿与公平</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/nested-monitor-lockout.html">嵌套监视器锁定</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/slipped-conditions.html">滑倒条件</a></li>
+</ul>
+<p>Java并发构造可帮助解决上述问题：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/locks.html">Java锁</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/read-write-locks.html">Java中的读/写锁</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/reentrance-lockout.html">重入锁定</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/semaphores.html">信号量</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/blocking-queues.html">阻塞队列</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/thread-pools.html">线程池</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/compare-and-swap.html">比较和交换</a></li>
+</ul>
+<p>Java并发实用程序（java.util.concurrent）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-util-concurrent/index.html">Java并发实用程序-java.util.concurrent</a></li>
+</ul>
+<p>进一步的主题：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/anatomy-of-a-synchronizer.html">同步器的解剖</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/non-blocking-algorithms.html">非阻塞算法</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/amdahls-law.html">阿姆达尔定律</a></li>
+<li><a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/java-concurrency/references.html">参考资料</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
 
 
 <div class="post-block">
@@ -293,9 +568,10 @@
       <meta itemprop="name" content="Hexo">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          《JAVA并发编程》
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/14/%E3%80%8A%20JAVA%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%8B/" class="post-title-link" itemprop="url">《JAVA并发编程》</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -334,7 +610,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="《-JAVA并发编程》"><a href="#《-JAVA并发编程》" class="headerlink" title="《 JAVA并发编程》"></a>《 JAVA并发编程》</h1><h2 id="并发性与多线程介绍"><a href="#并发性与多线程介绍" class="headerlink" title="并发性与多线程介绍"></a>并发性与多线程介绍</h2><p>在过去单 CPU 时代，单任务在一个时间点只能执行单一程序。之后发展到多任务阶段，计算机能在同一时间点并行执行多任务或多进程。虽然并不是真正意义上的“同一时间点”，而是多个任务或进程共享一个 CPU，并交由操作系统来完成多任务间对 CPU 的运行切换，以使得每个任务都有机会获得一定的时间片运行。</p>
+          <h1 id="《-JAVA并发编程》"><a href="#《-JAVA并发编程》" class="headerlink" title="《 JAVA并发编程》"></a>《 JAVA并发编程》</h1><h2 id="并发性与多线程介绍"><a href="#并发性与多线程介绍" class="headerlink" title="并发性与多线程介绍"></a>并发性与多线程介绍</h2><p>在过去单 CPU 时代，单任务在一个时间点只能执行单一程序。之后发展到多任务阶段，计算机能在同一时间点并行执行多任务或多进程。虽然并不是真正意义上的“同一时间点”，而是多个任务或进程共享一个 CPU，并交由操作系统来完成多任务间对 CPU 的运行切换，以使得每个任务都有机会获得一定的时间片运行。</p>
 <hr>
 <p>随着多任务对软件开发者带来的新挑战，程序不在能假设独占所有的CPU时间、所有的内存和其他计算机资源。一个好的程序榜样是在其不再使用这些资源时对其进行释放，以使得其他程序能有机会使用这些资源。</p>
 <hr>
@@ -640,6 +916,7 @@
 
 <p>可以看出，Semaphore 允许并发访问的任务数一直为 5，当然，这里还很容易看出一点，就是 Semaphore 仅仅是对资源的并发访问的任务数进行监控，而不会保证线程安全，因此，在访问的时候，要自己控制线程的安全访问。</p>
 
+      
     </div>
 
     
@@ -647,31 +924,122 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Concurrency/" rel="tag"># Concurrency</a>
-              <a href="/tags/Java/" rel="tag"># Java</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2020/07/09/Cache/" rel="prev" title="Cache">
-                  <i class="fa fa-chevron-left"></i> Cache
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2020/07/20/java-concurrency/" rel="next" title="多线程Guide">
-                  多线程Guide <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
 
 
 
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/09/Cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZP">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/09/Cache/" class="post-title-link" itemprop="url">Cache</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-07-09 11:10:01 / 修改时间：11:43:32" itemprop="dateCreated datePublished" datetime="2020-07-09T11:10:01+08:00">2020-07-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="高性能java缓存库-Caffeine"><a href="#高性能java缓存库-Caffeine" class="headerlink" title="高性能java缓存库-Caffeine"></a>高性能java缓存库-Caffeine</h2><h4 id="Caffeine简介"><a href="#Caffeine简介" class="headerlink" title="Caffeine简介"></a>Caffeine简介</h4><p>Caffeine基于java8的高性能，接近最优的缓存库。Caffeine提供的内存缓存使用参考Google guava的API。Caffeine是基于Google guava和 ConcurrentLinkedHashMap的设计经验上改进的成果。</p>
+<p>Caffeine可以通过建造者模式灵活的组合以下特性：</p>
+<p>通过异步自动加载实体到缓存中<br>基于大小的回收策略<br>基于时间的回收策略<br>自动刷新<br>key自动封装虚引用<br>value自动封装弱引用或软引用<br>实体过期或被删除的通知<br>写入外部资源<br>统计累计访问缓存</p>
+<h4 id="加载策略"><a href="#加载策略" class="headerlink" title="加载策略"></a>加载策略</h4><p>Caffeine提供了3种加载策略:手动加载，同步加载，异步加载</p>
+<p>手动加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Cache&lt;Key, Graph&gt; cache &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .expireAfterWrite(10, TimeUnit.MINUTES)</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .build();</span><br><span class="line">  </span><br><span class="line">&#x2F;&#x2F; 检索一个entry，如果没有则为null</span><br><span class="line">Graph graph &#x3D; cache.getIfPresent(key);</span><br><span class="line">&#x2F;&#x2F; 检索一个entry，如果entry为null，则通过key创建一个entry并加入缓存</span><br><span class="line">graph &#x3D; cache.get(key, k -&gt; createExpensiveGraph(key));</span><br><span class="line">&#x2F;&#x2F; 插入或更新一个实体</span><br><span class="line">cache.put(key, graph);</span><br><span class="line">&#x2F;&#x2F; 移除一个实体</span><br><span class="line">cache.invalidate(key);</span><br></pre></td></tr></table></figure>
+
+<p>同步加载<br>构造Cache时候，build方法传入一个CacheLoader实现类。实现load方法，通过key加载value。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">LoadingCache&lt;Key, Graph&gt; cache &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .expireAfterWrite(10, TimeUnit.MINUTES)</span><br><span class="line">    .build(key -&gt; createExpensiveGraph(key));</span><br><span class="line">&#x2F;&#x2F;如果缓存种没有对应的value，通过createExpensiveGraph方法加载</span><br><span class="line">Graph graph &#x3D; cache.get(key);</span><br><span class="line"></span><br><span class="line">Map&lt;Key, Graph&gt; graphs &#x3D; cache.getAll(keys);</span><br><span class="line">异步加载</span><br><span class="line">AsyncLoadingCache&lt;Key, Graph&gt; cache &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .expireAfterWrite(10, TimeUnit.MINUTES)</span><br><span class="line">    .buildAsync((key, executor) -&gt; createExpensiveGraphAsync(key, executor));</span><br><span class="line">CompletableFuture&lt;Graph&gt; graph &#x3D; cache.get(key);</span><br><span class="line">CompletableFuture&lt;Map&lt;Key, Graph&gt;&gt; graphs &#x3D; cache.getAll(keys);</span><br></pre></td></tr></table></figure>
+<p>AsyncLoadingCache 是 LoadingCache 的变体， 可以异步计算实体在一个线程池(Executor)上并且返回 CompletableFuture.</p>
+<h4 id="回收策略"><a href="#回收策略" class="headerlink" title="回收策略"></a>回收策略</h4><p>Caffeine提供了3种回收策略：基于大小回收，基于时间回收，基于引用回收</p>
+<p>基于大小回收<br>// 基于实体数量淘汰实体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LoadingCache&lt;Key, Graph&gt; graphs &#x3D; Caffeine.newBuilder()</span><br><span class="line">    .maximumSize(10_000)</span><br><span class="line">    .build(key -&gt; createExpensiveGraph(key));</span><br><span class="line">&#96;&#96;&#96;    </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过权重来计算，每个实体都有不同的权重，总权重到达最高时淘汰实体。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .maximumWeight(10_000)<br>    .weigher((Key key, Graph graph) -&gt; graph.vertices().size())<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">到达最大大小时淘汰最近最少使用的实体</span><br><span class="line"></span><br><span class="line">基于时间回收</span><br><span class="line">实体被访问之后，在实体被读或被写后的一段时间后过期</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .expireAfterAccess(5, TimeUnit.MINUTES)<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">基于写之后，在实体被写入后的一段时间后过期</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .expireAfterWrite(10, TimeUnit.MINUTES)<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">自定义策略Expiry，可以自定义在实体被读，被更新，被创建后的时间过期。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .expireAfter(new Expiry&lt;Key, Graph&gt;() {<br>      public long expireAfterCreate(Key key, Graph graph, long currentTime) {<br>        // Use wall clock time, rather than nanotime, if from an external resource<br>        long seconds = graph.creationDate().plusHours(5)<br>            .minus(System.currentTimeMillis(), MILLIS)<br>            .toEpochSecond();<br>        return TimeUnit.SECONDS.toNanos(seconds);<br>      }<br>      public long expireAfterUpdate(Key key, Graph graph,<br>          long currentTime, long currentDuration) {<br>        return currentDuration;<br>      }<br>      public long expireAfterRead(Key key, Graph graph,<br>          long currentTime, long currentDuration) {<br>        return currentDuration;<br>      }<br>    })<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">基于引用回收</span><br><span class="line">java种有四种引用：强引用，软引用，弱引用和虚引用，caffeine可以将值封装成弱引用或软引用。</span><br><span class="line">软引用：如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。</span><br><span class="line">弱引用：弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .weakKeys()<br>    .weakValues()<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .softValues()<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#### 自动刷新</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .maximumSize(10_000)<br>    .refreshAfterWrite(1, TimeUnit.MINUTES)<br>    .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在写后的持续时间过后，调用createExpensiveGraph刷新</span><br><span class="line"></span><br><span class="line">#### 移除通知</span><br></pre></td></tr></table></figure>
+<p>Cache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .removalListener((Key key, Graph graph, RemovalCause cause) -&gt;<br>        System.out.printf(“Key %s was removed (%s)%n”, key, cause))<br>    .build();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">通过removalListener添加实体移除监听器</span><br><span class="line"></span><br><span class="line">#### 写到外部存储</span><br><span class="line">通过CacheWriter 可以将缓存回写的外部存储中。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>LoadingCache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>  .writer(new CacheWriter&lt;Key, Graph&gt;() {<br>    @Override public void write(Key key, Graph graph) {<br>      // 写入到外部存储或二级缓存<br>    }<br>    @Override public void delete(Key key, Graph graph, RemovalCause cause) {<br>      // 删除外部存储或者二级缓存<br>    }<br>  })<br>  .build(key -&gt; createExpensiveGraph(key));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">使用场景</span><br><span class="line"></span><br><span class="line">#### 缓存同步数据库</span><br><span class="line">多级缓存同步</span><br><span class="line">注意，CacheWriter不能与弱键或AsyncLoadingCache一起使用</span><br><span class="line"></span><br><span class="line">#### 统计缓存使用情况</span><br></pre></td></tr></table></figure>
+<p>Cache&lt;Key, Graph&gt; graphs = Caffeine.newBuilder()<br>    .maximumSize(10_000)<br>    .recordStats()<br>    .build();</p>
+<pre><code>通过使用Caffeine.recordStats(), 可以转化成一个统计的集合. 通过 Cache.stats() 返回一个CacheStats。CacheStats提供以下统计方法
+
+hitRate(): 返回缓存命中率
+evictionCount(): 缓存回收数量
+averageLoadPenalty(): 加载新值的平均时间</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
