@@ -22,34 +22,29 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="线程安全与共享资源允许被多个线程同时执行的代码称作线程安全的代码。线程安全的代码不包含竞态条件。当多个线程同时更新共享资源时会引发竞态条件。因此，了解 Java 线程执行时共享了什么资源很重要。 局部变量局部变量存储在线程自己的栈中。也就是说，局部变量永远也不会被多个线程共享。所以，基础类型的局部变量是线程安全的。下面是基础类型的局部变量的一个例子： 123456public void someM">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线程安全的代码">
-<meta property="og:url" content="http://example.com/2020/07/20/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E4%BB%A3%E7%A0%81/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="让我欢喜让我忧">
+<meta property="og:url" content="http://example.com/page/10/index.html">
 <meta property="og:site_name" content="让我欢喜让我忧">
-<meta property="og:description" content="线程安全与共享资源允许被多个线程同时执行的代码称作线程安全的代码。线程安全的代码不包含竞态条件。当多个线程同时更新共享资源时会引发竞态条件。因此，了解 Java 线程执行时共享了什么资源很重要。 局部变量局部变量存储在线程自己的栈中。也就是说，局部变量永远也不会被多个线程共享。所以，基础类型的局部变量是线程安全的。下面是基础类型的局部变量的一个例子： 123456public void someM">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-20T07:30:26.000Z">
-<meta property="article:modified_time" content="2020-07-20T07:34:50.231Z">
 <meta property="article:author" content="弱智骚年">
-<meta property="article:tag" content="Concurrence">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2020/07/20/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E4%BB%A3%E7%A0%81/">
+<link rel="canonical" href="http://example.com/page/10/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>线程安全的代码 | 让我欢喜让我忧</title>
+  <title>让我欢喜让我忧</title>
   
 
 
@@ -184,7 +179,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -196,7 +191,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E4%B8%8E%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">线程安全与共享资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">局部的对象引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%88%90%E5%91%98"><span class="nav-number">1.3.</span> <span class="nav-text">对象成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6%E9%80%83%E9%80%B8%E8%A7%84%E5%88%99"><span class="nav-number">1.4.</span> <span class="nav-text">线程控制逃逸规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AB%9E%E6%80%81%E6%9D%A1%E4%BB%B6%E4%B8%8E%E4%B8%B4%E7%95%8C%E5%8C%BA"><span class="nav-number">2.</span> <span class="nav-text">竞态条件与临界区</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%9E%E6%80%81%E6%9D%A1%E4%BB%B6-amp-%E4%B8%B4%E7%95%8C%E5%8C%BA"><span class="nav-number">2.1.</span> <span class="nav-text">竞态条件 &amp; 临界区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%8F%8A%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">线程安全及不可变性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E4%B8%8D%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%81"><span class="nav-number">3.1.</span> <span class="nav-text">引用不是线程安全的！</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -256,12 +250,11 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
       
 
       
-
-  
+    
 
 
 <div class="post-block">
@@ -281,9 +274,10 @@
       <meta itemprop="name" content="让我欢喜让我忧">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          线程安全的代码
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/20/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">线程安全的代码</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -307,7 +301,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="线程安全与共享资源"><a href="#线程安全与共享资源" class="headerlink" title="线程安全与共享资源"></a>线程安全与共享资源</h1><p>允许被多个线程同时执行的代码称作线程安全的代码。线程安全的代码不包含竞态条件。当多个线程同时更新共享资源时会引发竞态条件。因此，了解 Java 线程执行时共享了什么资源很重要。</p>
+          <h1 id="线程安全与共享资源"><a href="#线程安全与共享资源" class="headerlink" title="线程安全与共享资源"></a>线程安全与共享资源</h1><p>允许被多个线程同时执行的代码称作线程安全的代码。线程安全的代码不包含竞态条件。当多个线程同时更新共享资源时会引发竞态条件。因此，了解 Java 线程执行时共享了什么资源很重要。</p>
 <h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>局部变量存储在线程自己的栈中。也就是说，局部变量永远也不会被多个线程共享。所以，基础类型的局部变量是线程安全的。下面是基础类型的局部变量的一个例子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">someMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">long</span> threadSafeInt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  threadSafeInt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -370,6 +364,7 @@
 <p>Calculator 类持有一个指向 ImmutableValue 实例的引用。注意，通过 setValue()方法和 add()方法可能会改变这个引用。因此，即使 Calculator 类内部使用了一个不可变对象，但 Calculator 类本身还是可变的，因此 Calculator 类不是线程安全的。换句话说：ImmutableValue 类是线程安全的，但使用它的类不是。当尝试通过不可变性去获得线程安全时，这点是需要牢记的。</p>
 <p>要使 Calculator 类实现线程安全，将 getValue()、setValue()和 add()方法都声明为同步方法即可。</p>
 
+      
     </div>
 
     
@@ -377,30 +372,20 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Concurrence/" rel="tag"># Concurrence</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2020/07/20/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/" rel="prev" title="并发编程模型">
-                  <i class="fa fa-chevron-left"></i> 并发编程模型
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2020/07/20/benifits/" rel="next" title="多线程的好处">
-                  多线程的好处 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
 
 
 
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 

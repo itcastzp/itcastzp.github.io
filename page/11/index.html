@@ -22,44 +22,29 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="并发编程模型并发系统可以采用多种并发编程模型来实现。并发模型指定了系统中的线程如何通过协作来完成分配给它们的作业。不同的并发模型采用不同的方式拆分作业，同时线程间的协作和交互方式也不相同。这篇并发模型教程将会较深入地介绍目前（2015 年，本文撰写时间）比较流行的几种并发模型。 并发模型与分布式系统之间的相似性本文所描述的并发模型类似于分布式系统中使用的很多体系结构。在并发系统中线程之间可以相互通">
-<meta property="og:type" content="article">
-<meta property="og:title" content="并发编程模型">
-<meta property="og:url" content="http://example.com/2020/07/20/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="让我欢喜让我忧">
+<meta property="og:url" content="http://example.com/page/11/index.html">
 <meta property="og:site_name" content="让我欢喜让我忧">
-<meta property="og:description" content="并发编程模型并发系统可以采用多种并发编程模型来实现。并发模型指定了系统中的线程如何通过协作来完成分配给它们的作业。不同的并发模型采用不同的方式拆分作业，同时线程间的协作和交互方式也不相同。这篇并发模型教程将会较深入地介绍目前（2015 年，本文撰写时间）比较流行的几种并发模型。 并发模型与分布式系统之间的相似性本文所描述的并发模型类似于分布式系统中使用的很多体系结构。在并发系统中线程之间可以相互通">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/1.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/2.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/3.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/4.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/5.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/6.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/7.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/8.png">
-<meta property="og:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/8.png">
-<meta property="article:published_time" content="2020-07-20T07:27:19.000Z">
-<meta property="article:modified_time" content="2020-07-20T07:27:43.167Z">
 <meta property="article:author" content="弱智骚年">
-<meta property="article:tag" content="Concurrence">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://doc.yonyoucloud.com/doc/wiki/project/java-concurrent/images/1.png">
 
 
-<link rel="canonical" href="http://example.com/2020/07/20/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
+<link rel="canonical" href="http://example.com/page/11/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>并发编程模型 | 让我欢喜让我忧</title>
+  <title>让我欢喜让我忧</title>
   
 
 
@@ -194,7 +179,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -206,7 +191,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">并发编程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">并发模型与分布式系统之间的相似性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E5%B7%A5%E4%BD%9C%E8%80%85"><span class="nav-number">1.2.</span> <span class="nav-text">并行工作者</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E5%B7%A5%E4%BD%9C%E8%80%85%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">并行工作者模型的优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E5%B7%A5%E4%BD%9C%E8%80%85%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">并行工作者模型的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%BE%88%E5%A4%8D%E6%9D%82"><span class="nav-number">1.3.1.</span> <span class="nav-text">共享状态可能会很复杂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%80%85"><span class="nav-number">1.3.2.</span> <span class="nav-text">无状态的工作者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E9%A1%BA%E5%BA%8F%E6%98%AF%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84"><span class="nav-number">1.3.3.</span> <span class="nav-text">任务顺序是不确定的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">流水线模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BA%94%E5%99%A8%EF%BC%8C%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.1.</span> <span class="nav-text">反应器，事件驱动系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actors-%E5%92%8C-Channels"><span class="nav-number">1.4.2.</span> <span class="nav-text">Actors 和 Channels</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.5.</span> <span class="nav-text">流水线模型的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E9%9C%80%E5%85%B1%E4%BA%AB%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.5.1.</span> <span class="nav-text">无需共享的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%8A%B6%E6%80%81%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%80%85"><span class="nav-number">1.5.2.</span> <span class="nav-text">有状态的工作者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%83%E5%A5%BD%E7%9A%84%E7%A1%AC%E4%BB%B6%E6%95%B4%E5%90%88%EF%BC%88Hardware-Conformity%EF%BC%89"><span class="nav-number">1.5.3.</span> <span class="nav-text">较好的硬件整合（Hardware Conformity）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E7%90%86%E7%9A%84%E4%BD%9C%E4%B8%9A%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.5.4.</span> <span class="nav-text">合理的作业顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.6.</span> <span class="nav-text">流水线模型的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E5%B9%B6%E8%A1%8C%EF%BC%88Functional-Parallelism%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">函数式并行（Functional Parallelism）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%82%A3%E7%A7%8D%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B%E6%9C%80%E5%A5%BD%EF%BC%9F"><span class="nav-number">1.8.</span> <span class="nav-text">使用那种并发模型最好？</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -266,12 +250,11 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
       
 
       
-
-  
+    
 
 
 <div class="post-block">
@@ -291,9 +274,10 @@
       <meta itemprop="name" content="让我欢喜让我忧">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          并发编程模型
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/20/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">并发编程模型</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -317,7 +301,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="并发编程模型"><a href="#并发编程模型" class="headerlink" title="并发编程模型"></a>并发编程模型</h1><p>并发系统可以采用多种并发编程模型来实现。并发模型指定了系统中的线程如何通过协作来完成分配给它们的作业。不同的并发模型采用不同的方式拆分作业，同时线程间的协作和交互方式也不相同。这篇并发模型教程将会较深入地介绍目前（2015 年，本文撰写时间）比较流行的几种并发模型。</p>
+          <h1 id="并发编程模型"><a href="#并发编程模型" class="headerlink" title="并发编程模型"></a>并发编程模型</h1><p>并发系统可以采用多种并发编程模型来实现。并发模型指定了系统中的线程如何通过协作来完成分配给它们的作业。不同的并发模型采用不同的方式拆分作业，同时线程间的协作和交互方式也不相同。这篇并发模型教程将会较深入地介绍目前（2015 年，本文撰写时间）比较流行的几种并发模型。</p>
 <h2 id="并发模型与分布式系统之间的相似性"><a href="#并发模型与分布式系统之间的相似性" class="headerlink" title="并发模型与分布式系统之间的相似性"></a>并发模型与分布式系统之间的相似性</h2><p>本文所描述的并发模型类似于分布式系统中使用的很多体系结构。在并发系统中线程之间可以相互通信。在分布式系统中进程之间也可以相互通信（进程有可能在不同的机器中）。线程和进程之间具有很多相似的特性。这也就是为什么很多并发模型通常类似于各种分布式系统架构。</p>
 <p>当然，分布式系统在处理网络失效、远程主机或进程宕掉等方面也面临着额外的挑战。但是运行在巨型服务器上的并发系统也可能遇到类似的问题，比如一块 CPU 失效、一块网卡失效或一个磁盘损坏等情况。虽然出现失效的概率可能很低，但是在理论上仍然有可能发生。</p>
 <p>由于并发模型类似于分布式系统架构，因此它们通常可以互相借鉴思想。例如，为工作者们（线程）分配作业的模型一般与分布式系统中的<a target="_blank" rel="noopener" href="http://tutorials.jenkov.com/software-architecture/load-balancing.html">负载均衡系统</a>比较相似。同样，它们在日志记录、失效转移、幂等性等错误处理技术上也具有相似性。</p>
@@ -392,6 +376,7 @@
 <p>通常情况下，这个答案取决于你的系统打算做什么。如果你的作业本身就是并行的、独立的并且没有必要共享状态，你可能会使用并行工作者模型去实现你的系统。虽然许多作业都不是自然并行和独立的。对于这种类型的系统，我相信使用流水线并发模型能够更好的发挥它的优势，而且比并行工作者模型更有优势。</p>
 <p>你甚至不用亲自编写所有流水线模型的基础结构。像 Vert.x 这种现代化的平台已经为你实现了很多。我也会去为探索如何设计我的下一个项目，使它运行在像 Vert.x 这样的优秀平台上。我感觉 Java EE 已经没有任何优势了。</p>
 
+      
     </div>
 
     
@@ -399,30 +384,20 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Concurrence/" rel="tag"># Concurrence</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2020/07/20/java-concurrency/" rel="prev" title="多线程Guide">
-                  <i class="fa fa-chevron-left"></i> 多线程Guide
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2020/07/20/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E4%BB%A3%E7%A0%81/" rel="next" title="线程安全的代码">
-                  线程安全的代码 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
 
 
 
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 

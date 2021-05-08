@@ -22,34 +22,29 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="多线程成本 更复杂的设计 上下文切换开销 资源消耗增加  从单线程应用程序到多线程应用程序不仅会带来好处。它还有一些成本。不要仅仅因为可以就启用多线程应用程序。您应该有一个好主意，即这样做所带来的收益大于成本。如有疑问，请尝试评估应用程序的性能或响应能力，而不仅仅是猜测。 更复杂的设计尽管多线程应用程序的某些部分比单线程应用程序简单，但其他部分则更复杂。由多个线程访问共享数据执行的代码需要特别注意">
-<meta property="og:type" content="article">
-<meta property="og:title" content="多线程成本">
-<meta property="og:url" content="http://example.com/2020/07/20/costs/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="让我欢喜让我忧">
+<meta property="og:url" content="http://example.com/page/9/index.html">
 <meta property="og:site_name" content="让我欢喜让我忧">
-<meta property="og:description" content="多线程成本 更复杂的设计 上下文切换开销 资源消耗增加  从单线程应用程序到多线程应用程序不仅会带来好处。它还有一些成本。不要仅仅因为可以就启用多线程应用程序。您应该有一个好主意，即这样做所带来的收益大于成本。如有疑问，请尝试评估应用程序的性能或响应能力，而不仅仅是猜测。 更复杂的设计尽管多线程应用程序的某些部分比单线程应用程序简单，但其他部分则更复杂。由多个线程访问共享数据执行的代码需要特别注意">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-20T09:22:50.000Z">
-<meta property="article:modified_time" content="2020-07-20T10:10:00.424Z">
 <meta property="article:author" content="弱智骚年">
-<meta property="article:tag" content="Concurrency">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2020/07/20/costs/">
+<link rel="canonical" href="http://example.com/page/9/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>多线程成本 | 让我欢喜让我忧</title>
+  <title>让我欢喜让我忧</title>
   
 
 
@@ -184,7 +179,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -196,7 +191,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%88%90%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">多线程成本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%8D%E6%9D%82%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.</span> <span class="nav-text">更复杂的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2%E5%BC%80%E9%94%80"><span class="nav-number">1.2.</span> <span class="nav-text">上下文切换开销</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E5%A2%9E%E5%8A%A0"><span class="nav-number">1.3.</span> <span class="nav-text">资源消耗增加</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -256,12 +250,11 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
       
 
       
-
-  
+    
 
 
 <div class="post-block">
@@ -269,7 +262,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/20/costs/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/20/benifits/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -281,9 +274,10 @@
       <meta itemprop="name" content="让我欢喜让我忧">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          多线程成本
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/20/benifits/" class="post-title-link" itemprop="url">多线程的好处</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -294,7 +288,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2020-07-20 17:22:50 / 修改时间：18:10:00" itemprop="dateCreated datePublished" datetime="2020-07-20T17:22:50+08:00">2020-07-20</time>
+      <time title="创建时间：2020-07-20 16:55:13 / 修改时间：17:14:47" itemprop="dateCreated datePublished" datetime="2020-07-20T16:55:13+08:00">2020-07-20</time>
     </span>
 
   
@@ -307,19 +301,41 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="多线程成本"><a href="#多线程成本" class="headerlink" title="多线程成本"></a>多线程成本</h1><ul>
-<li><a href="#%E6%9B%B4%E5%A4%8D%E6%9D%82%E7%9A%84%E8%AE%BE%E8%AE%A1">更复杂的设计</a></li>
-<li><a href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2%E5%BC%80%E9%94%80">上下文切换开销</a></li>
-<li><a href="#%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E5%A2%9E%E5%8A%A0">资源消耗增加</a></li>
+          <h1 id="多线程的好处"><a href="#多线程的好处" class="headerlink" title="多线程的好处"></a>多线程的好处</h1><ul>
+<li><a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84CPU%E4%BD%BF%E7%94%A8%E7%8E%87">更好的CPU使用率</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%9B%B4%E7%AE%80%E5%8D%95">程序设计更简单</a></li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E5%93%8D%E5%BA%94%E7%A8%8B%E5%BA%8F">更多响应程序</a></li>
+<li><a href="#%E6%9B%B4%E5%85%AC%E5%B9%B3%E5%9C%B0%E5%88%86%E9%85%8DCPU%E8%B5%84%E6%BA%90">更公平地分配CPU资源</a></li>
 </ul>
-<p>从单线程应用程序到多线程应用程序不仅会带来好处。它还有一些成本。不要仅仅因为可以就启用多线程应用程序。您应该有一个好主意，即这样做所带来的收益大于成本。如有疑问，请尝试评估应用程序的性能或响应能力，而不仅仅是猜测。</p>
-<h2 id="更复杂的设计"><a href="#更复杂的设计" class="headerlink" title="更复杂的设计"></a>更复杂的设计</h2><p>尽管多线程应用程序的某些部分比单线程应用程序简单，但其他部分则更复杂。由多个线程访问共享数据执行的代码需要特别注意。线程交互远非总是那么简单。错误线程同步引起的错误很难检测，重现和修复。</p>
-<h2 id="上下文切换开销"><a href="#上下文切换开销" class="headerlink" title="上下文切换开销"></a>上下文切换开销</h2><p>当CPU从执行一个线程切换到执行另一个线程时，CPU需要保存当前线程的本地数据，程序指针等，并加载要执行的下一个线程的本地数据，程序指针等。该开关称为“上下文开关”。CPU从在一个线程的上下文中执行切换为在另一个线程的上下文中执行。</p>
-<p>上下文切换并不便宜。您不想在线程之间进行不必要的切换。</p>
-<p>您可以在Wikipedia上阅读有关上下文切换的更多信息：</p>
-<p><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Context_switch">http://en.wikipedia.org/wiki/Context_switch</a></p>
-<h2 id="资源消耗增加"><a href="#资源消耗增加" class="headerlink" title="资源消耗增加"></a>资源消耗增加</h2><p>线程需要计算机中的一些资源才能运行。除了CPU时间外，线程还需要一些内存来保留其本地堆栈。它还可能会占用操作系统中管理线程所需的一些资源。尝试创建一个程序，该程序创建的100个线程除了等待外什么都不做，并查看应用程序在运行时需要占用多少内存。</p>
+<p>多线程的最大好处是：</p>
+<ul>
+<li>更高的CPU利用率。</li>
+<li>在某些情况下，程序设计更简单。</li>
+<li>响应速度更快的程序。</li>
+<li>在不同任务之间更公平地分配CPU资源。</li>
+</ul>
+<h2 id="更好的CPU使用率"><a href="#更好的CPU使用率" class="headerlink" title="更好的CPU使用率"></a>更好的CPU使用率</h2><p>想象一个应用程序从本地文件系统读取和处理文件。可以说，从磁盘读取af文件需要5秒钟，而处理则需要2秒钟。然后处理两个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  5秒读取文件A</span><br><span class="line">  2秒处理文件A</span><br><span class="line">  5秒钟读取文件B</span><br><span class="line">  2秒处理文件B</span><br><span class="line">-----------------------</span><br><span class="line"> 总共14秒</span><br></pre></td></tr></table></figure>
 
+<p>从磁盘读取文件时，大部分的CPU时间都花费在等待磁盘读取数据上。在这段时间内，CPU几乎处于空闲状态。它可能正在做其他事情。通过更改操作顺序，可以更好地利用CPU。查看以下顺序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  5秒读取文件A</span><br><span class="line">  5秒读取文件B + 2秒处理文件A</span><br><span class="line">  2秒处理文件B</span><br><span class="line">-----------------------</span><br><span class="line"> 总共12秒</span><br></pre></td></tr></table></figure>
+
+<p>CPU等待读取第一个文件。然后，它开始读取第二个文件。当计算机的IO组件读取第二个文件时，CPU处理第一个文件。请记住，在等待从磁盘读取文件时，CPU大部分处于空闲状态。</p>
+<p>通常，CPU在等待IO时可以做其他事情。不必是磁盘IO。它也可以是网络IO，也可以是来自计算机用户的输入。网络和磁盘IO通常比CPU和内存IO慢很多。</p>
+<h2 id="程序设计更简单"><a href="#程序设计更简单" class="headerlink" title="程序设计更简单"></a>程序设计更简单</h2><p>如果要在单线程应用程序中手动编写上述读取和处理的顺序，则必须跟踪每个文件的读取和处理状态。相反，您可以启动两个线程，每个线程仅读取和处理一个文件。这些等待线程将在等待磁盘读取其文件时被阻止。在等待时，其他线程可以使用CPU处理已读取的文件部分。结果是磁盘始终保持忙碌状态，将各种文件读入内存。这样可以更好地利用磁盘和CPU。由于每个线程只需要跟踪一个文件，因此编程也更容易。</p>
+<h2 id="更多响应程序"><a href="#更多响应程序" class="headerlink" title="更多响应程序"></a>更多响应程序</h2><p>将单线程应用程序转换为多线程应用程序的另一个共同目标是实现响应速度更快的应用程序。想象一下一个服务器应用程序在某个端口上侦听传入的请求。收到请求后，它将处理该请求，然后返回监听。服务器循环如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while(server is active)&#123;</span><br><span class="line">  listen for request</span><br><span class="line">  process request</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果处理该请求需要很长时间，则在这段时间内没有新客户端可以向服务器发送新的请求。只有在服务器正在侦听时，才能接收请求。</p>
+<p>另一种设计是侦听线程将请求传递给工作线程，然后立即返回侦听。工作线程将处理该请求，并将回复发送给客户端。该设计概述如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while(server is active)&#123;</span><br><span class="line">  listen for request</span><br><span class="line">  hand request to worker thread</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，服务器线程将尽快恢复监听。因此，更多的客户端可以将请求发送到服务器。服务器变得响应性更好。</p>
+<p>桌面应用程序也是如此。如果单击启动长任务的按钮，并且执行任务的线程是更新窗口，按钮等的线程，则任务执行时应用程序将显示为无响应。好办法是：可以将任务移交给工作线程。当工作线程忙于任务时，窗口线程可以自由响应其他用户请求。当工作线程完成时，它向窗口线程发出信号。然后，窗口线程可以使用任务结果来更新应用程序窗口。具有工作线程设计的程序将对用户更加友好响应。</p>
+<h2 id="更公平地分配CPU资源"><a href="#更公平地分配CPU资源" class="headerlink" title="更公平地分配CPU资源"></a>更公平地分配CPU资源</h2><p>假设有一个服务器正在接收来自客户端的请求。然后想象一下，其中一个客户端发送了一个处理时间很长的请求，例如10秒。如果服务器使用单个线程处理了所有任务，则处理缓慢的请求后的所有请求都将被迫等待，直到处理完完整的请求为止。</p>
+<p>通过在多个线程之间分配CPU时间并在线程之间进行切换，CPU可以在多个请求之间更公平地共享其执行时间。这样，即使其中一个请求较慢，也可以与较慢的请求同时执行处理速度更快的其他请求。当然，这意味着执行慢速请求的速度甚至会更慢。但是，其他请求将等待更短的时间来处理，因为它们不必等待慢的任务完成才可以处理它们。如果只有慢速请求要处理，则仍可以将CPU单独分配给慢速任务。</p>
+
+      
     </div>
 
     
@@ -327,30 +343,20 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Concurrency/" rel="tag"># Concurrency</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2020/07/20/benifits/" rel="prev" title="多线程的好处">
-                  <i class="fa fa-chevron-left"></i> 多线程的好处
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2020/07/20/concurrency-models/" rel="next" title="并发模型">
-                  并发模型 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
 
 
 
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 

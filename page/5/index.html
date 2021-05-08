@@ -22,36 +22,29 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="JSR133Cookbook-前言原文地址：http:&#x2F;&#x2F;gee.cs.oswego.edu&#x2F;dl&#x2F;jmm&#x2F;cookbook.html Doug LeaLast modified: Sun Oct 17 14:21:45 EDT 1999 指令重排内存屏障多处理器指南前言：从最初的探索至今已经有十年了。在此期间，很多关于处理器和语言的内存模型的规范和问题变得更清楚，更容易理解，但还有一些没有研究清">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JSR133Cookbook">
-<meta property="og:url" content="http://example.com/2020/07/27/jmm-cookbook/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="让我欢喜让我忧">
+<meta property="og:url" content="http://example.com/page/5/index.html">
 <meta property="og:site_name" content="让我欢喜让我忧">
-<meta property="og:description" content="JSR133Cookbook-前言原文地址：http:&#x2F;&#x2F;gee.cs.oswego.edu&#x2F;dl&#x2F;jmm&#x2F;cookbook.html Doug LeaLast modified: Sun Oct 17 14:21:45 EDT 1999 指令重排内存屏障多处理器指南前言：从最初的探索至今已经有十年了。在此期间，很多关于处理器和语言的内存模型的规范和问题变得更清楚，更容易理解，但还有一些没有研究清">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-27T08:00:58.000Z">
-<meta property="article:modified_time" content="2020-07-27T08:30:04.463Z">
 <meta property="article:author" content="弱智骚年">
-<meta property="article:tag" content="cookbook">
-<meta property="article:tag" content="Concurrency">
-<meta property="article:tag" content="jsr133">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2020/07/27/jmm-cookbook/">
+<link rel="canonical" href="http://example.com/page/5/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>JSR133Cookbook | 让我欢喜让我忧</title>
+  <title>让我欢喜让我忧</title>
   
 
 
@@ -186,7 +179,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -198,7 +191,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSR133Cookbook-%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">JSR133Cookbook-前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92"><span class="nav-number">2.</span> <span class="nav-text">指令重排</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C"><span class="nav-number">3.</span> <span class="nav-text">内存屏障</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">多处理器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E5%8D%97"><span class="nav-number">5.</span> <span class="nav-text">指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92"><span class="nav-number">5.1.</span> <span class="nav-text">1. 指令重排</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Volatile%E4%B8%8E%E7%9B%91%E8%A7%86%E5%99%A8"><span class="nav-number">5.1.1.</span> <span class="nav-text">Volatile与监视器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final%E5%AD%97%E6%AE%B5"><span class="nav-number">5.1.2.</span> <span class="nav-text">final字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C"><span class="nav-number">5.2.</span> <span class="nav-text">2. 内存屏障</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">5.2.1.</span> <span class="nav-text">内存屏障的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LoadLoad-%E5%B1%8F%E9%9A%9C"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">LoadLoad 屏障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StoreStore-%E5%B1%8F%E9%9A%9C"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">StoreStore  屏障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LoadStore-%E5%B1%8F%E9%9A%9C"><span class="nav-number">5.2.1.3.</span> <span class="nav-text">LoadStore 屏障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StoreLoad-Barriers"><span class="nav-number">5.2.1.4.</span> <span class="nav-text">StoreLoad Barriers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96%E5%92%8C%E5%B1%8F%E9%9A%9C"><span class="nav-number">5.2.1.5.</span> <span class="nav-text">数据依赖和屏障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8E%E5%8E%9F%E5%AD%90%E6%8C%87%E4%BB%A4%E4%BA%A4%E4%BA%92"><span class="nav-number">5.2.1.6.</span> <span class="nav-text">与原子指令交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">3. 多处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8C%87%E5%8D%97"><span class="nav-number">5.4.</span> <span class="nav-text">4. 指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%A4%84%E7%90%86%E5%99%A8-Uniprocessors"><span class="nav-number">5.4.1.</span> <span class="nav-text">单处理器(Uniprocessors)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%B1%8F%E9%9A%9C-Inserting-Barriers"><span class="nav-number">5.4.2.</span> <span class="nav-text">插入屏障(Inserting Barriers)</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -258,12 +250,11 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
       
 
       
-
-  
+    
 
 
 <div class="post-block">
@@ -283,9 +274,10 @@
       <meta itemprop="name" content="让我欢喜让我忧">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          JSR133Cookbook
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/27/jmm-cookbook/" class="post-title-link" itemprop="url">JSR133Cookbook</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -309,7 +301,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="JSR133Cookbook-前言"><a href="#JSR133Cookbook-前言" class="headerlink" title="JSR133Cookbook-前言"></a>JSR133Cookbook-前言</h1><p><kbd>原文地址：<a target="_blank" rel="noopener" href="http://gee.cs.oswego.edu/dl/jmm/cookbook.html">http://gee.cs.oswego.edu/dl/jmm/cookbook.html</a></kbd></p>
+          <h1 id="JSR133Cookbook-前言"><a href="#JSR133Cookbook-前言" class="headerlink" title="JSR133Cookbook-前言"></a>JSR133Cookbook-前言</h1><p><kbd>原文地址：<a target="_blank" rel="noopener" href="http://gee.cs.oswego.edu/dl/jmm/cookbook.html">http://gee.cs.oswego.edu/dl/jmm/cookbook.html</a></kbd></p>
 <p><kbd><strong>Doug Lea<br>Last modified: Sun Oct 17 14:21:45 EDT 1999</strong></kbd></p>
 <h1 id="指令重排"><a href="#指令重排" class="headerlink" title="指令重排"></a><a href="#1">指令重排</a></h1><h1 id="内存屏障"><a href="#内存屏障" class="headerlink" title="内存屏障"></a><a href="#2">内存屏障</a></h1><h1 id="多处理器"><a href="#多处理器" class="headerlink" title="多处理器"></a><a href="#3">多处理器</a></h1><h1 id="指南"><a href="#指南" class="headerlink" title="指南"></a><a href="#4">指南</a></h1><p>前言：从最初的探索至今已经有十年了。在此期间，很多关于处理器和语言的内存模型的规范和问题变得更清楚，更容易理解，但还有一些没有研究清楚。本指南一直在修订、完善来保证它的准确性，然而本指南部分内容展开的细节还不是很完整。想更全面的了解, 可以特别关注下 Peter Sewell和 Cambridge Relaxed Memory Concurrency Group的研究工作。</p>
 <p>这是一篇用于说明在JSR-133中制定的新Java内存模型（JMM）的非官方指南。这篇指南提供了在最简单的背景下各种规则存在的原因，而不是这些规则在指令重排、多核处理器屏障指令和原子操作等方面对编译器和JVM所造成的影响。它还包括了一系列遵循JSR-133的指南。本指南是“非官方”的文档，因为它还包括特定处理器性能和规范的解释，我们不能保证所有的解释都是正确的，此外，处理器的规范和实现也可能会随时改变。</p>
@@ -603,6 +595,7 @@
 <p>在每条volatile store指令之后插入一条StoreLoad屏障。注意，虽然也可以在每条volatile load指令之前插入一个StoreLoad屏障，但对于使用volatile的典型程序来说则会更慢，因为读操作会大大超过写操作。或者，如果可以的话，将volatile store实现成一条原子指令（例如x86平台上的XCHG），就可以省略这个屏障操作。如果原子指令比StoreLoad屏障成本低，这种方式就更高效。</p>
 <p>在每条volatile load指令之后插入LoadLoad和LoadStore屏障。在持有数据依赖顺序的处理器上，如果下一条存取指令依赖于volatile load出来的值，就不需要插入屏障。特别是，在load一个volatile引用之后，如果后续指令是null检</p>
 
+      
     </div>
 
     
@@ -610,32 +603,20 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/cookbook/" rel="tag"># cookbook</a>
-              <a href="/tags/Concurrency/" rel="tag"># Concurrency</a>
-              <a href="/tags/jsr133/" rel="tag"># jsr133</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2020/07/20/same-threading/" rel="prev" title="同一线程">
-                  <i class="fa fa-chevron-left"></i> 同一线程
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2020/07/27/jsr133faq/" rel="next" title="JSR133（Java内存模型）">
-                  JSR133（Java内存模型） <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
 
 
 
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
